@@ -1,0 +1,64 @@
+
+\documentclass[xcolor=dvipsnames, fontsize=11pt, % Font size
+pagesize, % Write page size to dvi or pdf
+parskip=half-, t]{beamer}
+
+\input{beamer.tex}
+\usepackage{multicol}
+%\titlegraphic{\includegraphics[height=0.15\textwidth]{../logo.png}}
+\title[Artificial Intelligence for Beginners]{Gradient Descent}
+\subtitle{Towards Neural Networks}
+\author[Justin Stevens]{\large Justin Stevens} % Your name
+\date{}
+\setbeamertemplate{button}{\tikz
+	\node[
+	inner xsep=10pt,
+	draw=structure!80,
+	fill=structure!50,
+	rounded corners=4pt]  {\large\insertbuttontext};}
+\usepackage{asymptote}
+\usepackage{animate}
+\usepackage{xmpmulti}
+\begin{document}
+	\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+	\begin{frame}[c]
+	\centering
+	\titlepage
+\end{frame}
+\section{Classifying Digits through MNIST}
+\subsection{Defining the Problem}
+\begin{frame}{Example Images}
+\begin{figure} 
+\center
+\includegraphics{mnist_100_digits.png}
+\caption{How would you devise a system for a \textbf{computer} to classify the digits above? What assumptions do we have to make about the data set? }
+\end{figure}
+\end{frame}
+
+\begin{frame}{Assumptions}
+\begin{itemize}
+\item 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What we're building towards}
+\begin{figure}
+\center
+\includegraphics[scale=0.36]{goal.png}
+\caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits, one for each number from $0$ to $9$.}
+\end{figure}
+\end{frame}
+
+
+
+\subsection{References}
+\begin{frame}[c]{References}
+\setbeamertemplate{itemize items}[triangle]
+
+\href{http://www.slader.com/textbook/9780495011668-stewart-calculus-early-transcendentals-6th-edition/}{\beamergotobutton{Stewart Calculus: Early Transcedentals, 6th Edition}} \smallskip
+
+\href{https://www.youtube.com/playlist?list=PLDesaqWTN6ESk16YRmzuJ8f6-rnuy0Ry7}{\beamergotobutton{Professor Leonard Calculus 3 (Full Length Videos)}} \smallskip
+
+\href{http://tutorial.math.lamar.edu/Classes/CalcIII/CalcIII.aspx}{\beamergotobutton{Paul's Online Math Notes, Calculus III}} 
+\end{frame}
+\end{document}

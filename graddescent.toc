@@ -1,0 +1,4 @@
+\select@language {english}
+\beamer@sectionintoc {1}{Classifying Digits through MNIST}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Defining the Problem}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{References}{6}{0}{1}
