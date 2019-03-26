@@ -27,17 +27,21 @@ parskip=half-, t]{beamer}
 \end{frame}
 \section{Classifying Digits through MNIST}
 \subsection{Defining the Problem}
-\begin{frame}{Example Images}
+\begin{frame}[c]{Example Images}
 \begin{figure} 
 \center
 \includegraphics{mnist_100_digits.png}
-\caption{How would you devise a system for a \textbf{computer} to classify the digits above? What assumptions do we have to make about the data set? }
+\caption{How would you devise a system for a \textbf{computer} to classify the digits? What assumptions do we have to make about the data set, known as MNIST? }
 \end{figure}
 \end{frame}
 
-\begin{frame}{Assumptions}
+\begin{frame}[c]{Assumptions}
 \begin{itemize}
-\item 
+\item The MNIST database contains thousands of handwritten digits. 
+\item Each data-point contains both an image, and the desired digit.
+\item The images are $28\times 28$ pixel arrays, with each pixel ranging from $0$ to $255$. 
+\item $60,000$ of these are designated for training purposes, and $10,000$ for test purposes.
+\item We'll build a model from these, that will learn to classify digits!
 \end{itemize}
 \end{frame}
 
