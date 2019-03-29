@@ -94,10 +94,11 @@ This is a simplified model of a \textbf{perceptron}. The idea was developed by F
 
 \begin{figure}
 \center
-\includegraphics[scale=0.75]{perc.png}
+\includegraphics[scale=0.66]{perc.png}
+\caption{\textit{Source: Nielsen}}
 \end{figure} \pause
 \vspace{0.05\textheight} 
-Each of these lines collect evidence and are weighted to produce an output. \pause In practice, our inputs and outputs don't necessarily have to be binary; they can be real-valued. We therefore have to define a new activation function. \pause First, we have to make a slight modification to our model.
+Each of these lines collect evidence and are weighted to produce an output. \pause In practice, our inputs and outputs don't necessarily have to be binary; they can be real-valued. We therefore have to define a new activation function. \pause First, we make a slight modification to our model by adding bias.
 \end{frame}
 \subsection{Activation Functions}
 \begin{frame}{Introducing the Bias}
@@ -111,6 +112,11 @@ Sometimes we'll need to calculate a value as an intermediate step in a calculati
 
 \end{frame}
 
+\begin{frame}{Sigmoid Function} 
+As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a rectified linear unit, it can be any non-negative number. \pause However, for computational purposes, it's easiest if our outputs live in the range $(0,1)$. \pause 
+
+
+\end{frame}
 
 
 
@@ -133,15 +139,15 @@ Sometimes we'll need to calculate a value as an intermediate step in a calculati
 \item  An individual image is a $28\times 28$ array of pixels.\pause  
 \item The desired digit is represented as a number from $0$ to $9$. \pause 
 \item $60,000$ images are designated for training, and $10,000$ for testing. \pause 
-\item We'll build a model from the training images that will learn to classify digits!
 \end{itemize}
+We'll build a model from the training images that will learn to classify digits!
 \end{frame}
 
 \begin{frame}{What we're building towards}
 \begin{figure}
 \center
 \includegraphics[scale=0.36]{goal.png}
-\caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits, one for each number from $0$ to $9$.}
+\caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits.}
 \end{figure}
 \end{frame}
 
@@ -151,9 +157,9 @@ Sometimes we'll need to calculate a value as an intermediate step in a calculati
 \begin{frame}[c]{References}
 \setbeamertemplate{itemize items}[triangle]
 
-\href{http://www.slader.com/textbook/9780495011668-stewart-calculus-early-transcendentals-6th-edition/}{\beamergotobutton{Stewart Calculus: Early Transcedentals, 6th Edition}} \smallskip
+\href{http://neuralnetworksanddeeplearning.com/chap1.html}{\beamergotobutton{Michael Nielsen: Using neural nets to recognize handwritten digits}} \smallskip
 
-\href{https://www.youtube.com/playlist?list=PLDesaqWTN6ESk16YRmzuJ8f6-rnuy0Ry7}{\beamergotobutton{Professor Leonard Calculus 3 (Full Length Videos)}} \smallskip
+\href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \smallskip
 
 \href{http://tutorial.math.lamar.edu/Classes/CalcIII/CalcIII.aspx}{\beamergotobutton{Paul's Online Math Notes, Calculus III}} 
 \end{frame}
