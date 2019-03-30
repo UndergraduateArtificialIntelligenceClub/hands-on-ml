@@ -1,7 +1,7 @@
 \select@language {english}
 \beamer@sectionintoc {1}{Decision Making}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Perceptrons}{3}{0}{1}
-\beamer@subsectionintoc {1}{2}{Activation Functions}{19}{0}{1}
-\beamer@sectionintoc {2}{Classifying Digits through MNIST}{28}{0}{2}
-\beamer@subsectionintoc {2}{1}{Defining the Problem}{29}{0}{2}
-\beamer@subsectionintoc {2}{2}{References}{37}{0}{2}
+\beamer@subsectionintoc {1}{2}{Activation Functions}{17}{0}{1}
+\beamer@sectionintoc {2}{Classifying Digits through MNIST}{26}{0}{2}
+\beamer@subsectionintoc {2}{1}{Defining the Problem}{27}{0}{2}
+\beamer@subsectionintoc {2}{2}{References}{33}{0}{2}
