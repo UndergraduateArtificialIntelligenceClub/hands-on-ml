@@ -6,10 +6,10 @@ parskip=half-, t]{beamer}
 \input{beamer.tex}
 \usepackage{multicol}
 \usepackage{listings}
-\titlegraphic{\includegraphics[height=0.12\textwidth]{uofa.png}}
+\titlegraphic{\includegraphics[height=0.09\textwidth]{uofa.png}}
 \title[Artificial Intelligence for Beginners]{Gradient Descent}
 \subtitle{Towards Neural Networks}
-\author[Justin Stevens]{\large Justin Stevens} % Your name
+\author[Justin Stevens]{\large Justin Stevens \\ \large Undergraduate AI Society \\  April 2nd, 2019} % 
 \date{}
 \setbeamertemplate{button}{\tikz
 	\node[
@@ -105,20 +105,11 @@ Each of these lines collect evidence and are weighted to produce an output. \pau
 \begin{frame}[c]{Introducing the Bias}
 Instead of comparing our weighted sum to a threshold, we instead \textit{add} a bias, $b$, to our weighted sum. We write this as $\bar{w}\cdot \bar{x}+b$ instead. \pause Then $$\text{output}=\begin{cases} 0 & \text{ if } \bar{w}\cdot \bar{x}+b<0 \\ 
 1 & \text{ if } \bar{w}\cdot \bar{x}+b\ge 0. \end{cases}$$
-This is known as the \textit{heaviside step function}. In the next few slides, we'll see examples of other activation functions, but first we'll draw a picture. \pause
+This is known as the \textit{heaviside step function}. We'll extend our model to multiple outputs soon, but first we'll examine other activation functions. \pause
 \begin{figure}
 \includegraphics[scale=0.23]{bias.jpg} 
 \end{figure}
 \end{frame}
-\begin{frame}{Extending our Model}
-\begin{figure}
-\center
-\includegraphics[scale=0.36]{perceptron.png}
-\caption{\textit{Source: Daniel Alvarez, InTech}}
-\end{figure}
-\end{frame}
-
-
 \begin{frame}{Rectified Linear Unit}
 If we want our outputs to be non-negative, we use the \textbf{rectified linear unit}, $$f(x)=\text{max}\{0, x\}.$$ \pause Graphically, we can see:
 \begin{figure}
@@ -134,8 +125,15 @@ As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a
 \includegraphics[scale=0.36]{logistic.png}
 \caption{As $z\to \infty$, we see $\sigma(z)\to 1$. Alternatively, as $z\to -\infty$, $\sigma(z)\to 0$. (\textit{Source: Towards Data Science}).}
 \end{figure}
+\end{frame}
 
-
+\begin{frame}{Supervised Learning}
+In \textbf{supervised learning} problems, we're given a set of training data with labels, which we try to learn. We'll use a generalization of the perceptron with different neurons, for which we try to learn the best possible weights. \pause
+\begin{figure}
+\center
+\includegraphics[scale=0.28]{perceptron.png}
+\caption{\textit{Source: Daniel Alvarez, InTech}}
+\end{figure}
 \end{frame}
 
 
@@ -147,7 +145,7 @@ As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a
 \begin{figure} 
 \center
 \includegraphics{mnist_100_digits.png}
-\caption{How would you devise a system for a \textbf{computer} to classify the digits? What assumptions do we have to make about the data set, known as MNIST? }
+\caption{How would you devise a system for a \textbf{computer} to classify the digits? How can we best utilize the data set, known as MNIST?  (\textit{Source: Nielsen}) }
 \end{figure}
 \end{frame}
 
@@ -158,8 +156,8 @@ As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a
 \item Each data-point contains both an image, and the desired digit.
 \item $60,000$ images are designated for training, and $10,000$ for testing:
 \includegraphics[scale=0.42]{load.png}
-\end{itemize}
-\item Each image contains pixels ranging $0$ to $255$, in decreasing darkness.
+\end{itemize} \pause 
+\item Each image contains pixels ranging $0$ to $255$, in decreasing darkness. \pause
 \item  An individual image is a $28\times 28$ array of pixels.\pause  
 \item The desired digit is represented as a number from $0$ to $9$. \pause 
 \end{itemize}
@@ -170,10 +168,15 @@ We'll build a model from the training images that will learn to classify digits!
 \begin{figure}
 \center
 \includegraphics[scale=0.36]{goal.png}
-\caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits.}
+\caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits. (\textit{Source: Nielsen}) }
 \end{figure}
 \end{frame}
 
+\begin{frame}{Hidden Layer}
+The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12} & \cdots & w_{1,15} \\  w_{21} & w_{22} & \cdots & w_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\  w_{784, 1} & w_{784, 2} & \cdots & w_{784, 15} \end{pmatrix}, \quad \bar{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ \vdots \\ \vdots \\ x_{784} \end{pmatrix}.$$
+We take the dot product of each \textbf{column} with our input vector $\bar{x}$. We then add our bias vector, $\bar{b}$, which is $15\times 1$. We finally apply our activation: $$\bar{h}=\sigma(W^{T}\bar{x}+\bar{b}).$$
+
+\end{frame}
 
 
 \subsection{References}
@@ -184,6 +187,5 @@ We'll build a model from the training images that will learn to classify digits!
 
 \href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \smallskip
 
-\href{http://tutorial.math.lamar.edu/Classes/CalcIII/CalcIII.aspx}{\beamergotobutton{Paul's Online Math Notes, Calculus III}} 
 \end{frame}
 \end{document}
