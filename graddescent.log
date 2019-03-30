@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 MAR 2019 14:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  29 MAR 2019 19:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1660,28 +1660,28 @@ Package csquotes Info: Redefining alias 'default' -> 'english'.
 (./graddescent.aux)
 \openout1 = `graddescent.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 22.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 22.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 22.
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 22.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1752,7 +1752,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box117
-Package hyperref Info: Link coloring OFF on input line 22.
+Package hyperref Info: Link coloring OFF on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1762,83 +1762,83 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count386
 )
-LaTeX Info: Redefining \ref on input line 22.
-LaTeX Info: Redefining \pageref on input line 22.
-LaTeX Info: Redefining \nameref on input line 22.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
 
 (./graddescent.out) (./graddescent.out)
 \@outlinefile=\write9
 \openout9 = `graddescent.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 22.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 23.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/bx/n on input line 22.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/bx/n on input line 23.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 22.
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 23.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 22.
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 23.
 \symnumbers=\mathgroup12
-LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 22.
+LaTeX Font Info:    Redeclaring symbol font `pureletters' on input line 23.
 LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
-(Font)              `pureletters' in the math version `normal' on input line 22
+(Font)              `pureletters' in the math version `normal' on input line 23
 .
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `normal'
-(Font)                  OT1/mathkerncmss/m/sl --> T1/lmss/m/it on input line 22
+(Font)                  OT1/mathkerncmss/m/sl --> T1/lmss/m/it on input line 23
 .
 LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
-(Font)              `pureletters' in the math version `bold' on input line 22.
+(Font)              `pureletters' in the math version `bold' on input line 23.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
 (Font)                  OT1/mathkerncmss/bx/sl --> T1/lmss/m/it on input line 2
-2.
+3.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 22.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 22.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 22.
+(Font)                  OT1/lmss/m/n --> T1/lmr/m/n on input line 23.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 23.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 22.
+(Font)                  OT1/lmss/m/n --> T1/lmss/m/n on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 22.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 22.
+(Font)                  OT1/lmss/bx/n --> T1/lmss/m/n on input line 23.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 22.
+(Font)                  OT1/lmr/m/it --> T1/lmss/m/it on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 22.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 22.
+(Font)                  OT1/lmr/bx/it --> T1/lmss/m/it on input line 23.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 22.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 22.
+(Font)                  OT1/lmtt/m/n --> T1/lmtt/m/n on input line 23.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 22.
+(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 23.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 22.
+(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T1/lmr/bx/n on input line 22.
+(Font)                  OT1/lmss/bx/n --> T1/lmr/bx/n on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T1/lmss/bx/n --> T1/lmss/bx/n on input line 22.
+(Font)                  T1/lmss/bx/n --> T1/lmss/bx/n on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 22.
+(Font)                  T1/lmss/m/n --> T1/lmss/bx/n on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 22.
+(Font)                  T1/lmss/m/it --> T1/lmss/bx/it on input line 23.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T1/lmtt/m/n --> T1/lmtt/bx/n on input line 22.
-LaTeX Font Info:    Redeclaring symbol font `boldpureletters' on input line 22.
+(Font)                  T1/lmtt/m/n --> T1/lmtt/bx/n on input line 23.
+LaTeX Font Info:    Redeclaring symbol font `boldpureletters' on input line 23.
 
 LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
 (Font)              `boldpureletters' in the math version `normal' on input lin
-e 22.
+e 23.
 LaTeX Font Info:    Overwriting symbol font `boldpureletters' in version `norma
 l'
 (Font)                  OT1/mathkerncmss/bx/sl --> T1/lmss/bx/it on input line 
-22.
+23.
 LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
 (Font)              `boldpureletters' in the math version `bold' on input line 
-22.
+23.
 LaTeX Font Info:    Overwriting symbol font `boldpureletters' in version `bold'
 
 (Font)                  OT1/mathkerncmss/bx/sl --> T1/lmss/bx/it on input line 
-22.
+23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/beamer/translator/dicts/translato
 r-basic-dictionary/translator-basic-dictionary-English.dict
@@ -1864,7 +1864,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 r-theorem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 22.
+LaTeX Info: Redefining \includegraphics on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -1872,8 +1872,8 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 \c@lstlisting=\count387
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 22.
-LaTeX Info: Redefining \microtypecontext on input line 22.
+(lastpage)             ! on input line 23.
+LaTeX Info: Redefining \microtypecontext on input line 23.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1887,8 +1887,8 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package tocstyle Info: prepare \l@part for redefinition on input line 22.
-Package tocstyle Info: prepare \l@chapter for redefinition on input line 22.
+Package tocstyle Info: prepare \l@part for redefinition on input line 23.
+Package tocstyle Info: prepare \l@chapter for redefinition on input line 23.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
@@ -1896,13 +1896,19 @@ Package marginnote Info: \pdfoutput not 0 or unimportant and
 (marginnote)             \pdflastxpos or \lastxpos available.
 (marginnote)             Extended position detection mode activated.
 
-(./graddescent.nav) [1
+(./graddescent.nav) <uofa.png, id=38, 115.632pt x 27.2217pt>
+File: uofa.png Graphic file (type png)
+ <use uofa.png>
+Package pdftex.def Info: uofa.png used on input line 28.
+(pdftex.def)             Requested size: 174.49033pt x 41.07376pt.
 
-{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./grad
-descent.toc) [2
+[1
+
+{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./uofa.
+png>] (./graddescent.toc) [2
 
 ]
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 51.
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 52.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmss.fd
@@ -1912,30 +1918,30 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 51.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 52.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 51.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 52.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 51.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 52.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 51.
+(Font)              <10.95> on input line 52.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 51.
+(Font)              <8> on input line 52.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 51.
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
+(Font)              <6> on input line 52.
+LaTeX Font Info:    Try loading font information for U+msa on input line 52.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1943,7 +1949,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
+LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1952,12 +1958,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 51.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 52.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <8> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 51.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 52.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <6> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 51.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 51.
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 52.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 52.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1967,11 +1973,11 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 (RS)
 )
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 51.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 52.
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <8> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 51.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 52.
 LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <6> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 51.
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 52.
  [3
 
 ]
@@ -1993,177 +1999,200 @@ LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <6> not available
 
 ] [12
 
-] [13
-
 ]
-<perc.png, id=141, 281.05pt x 138.5175pt>
+<perc.png, id=137, 281.05pt x 138.5175pt>
 File: perc.png Graphic file (type png)
  <use perc.png>
-Package pdftex.def Info: perc.png used on input line 102.
+Package pdftex.def Info: perc.png used on input line 103.
 (pdftex.def)             Requested size: 185.49356pt x 91.42181pt.
 LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 102.
- [14
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 103.
+ [13
 
  <./perc.png>]
 File: perc.png Graphic file (type png)
 
 <use perc.png>
-Package pdftex.def Info: perc.png used on input line 102.
+Package pdftex.def Info: perc.png used on input line 103.
+(pdftex.def)             Requested size: 185.49356pt x 91.42181pt.
+ [14
+
+]
+File: perc.png Graphic file (type png)
+ <use perc.png>
+Package pdftex.def Info: perc.png used on input line 103.
 (pdftex.def)             Requested size: 185.49356pt x 91.42181pt.
  [15
 
 ]
 File: perc.png Graphic file (type png)
  <use perc.png>
-Package pdftex.def Info: perc.png used on input line 102.
+Package pdftex.def Info: perc.png used on input line 103.
 (pdftex.def)             Requested size: 185.49356pt x 91.42181pt.
  [16
 
 ]
-File: perc.png Graphic file (type png)
- <use perc.png>
-Package pdftex.def Info: perc.png used on input line 102.
-(pdftex.def)             Requested size: 185.49356pt x 91.42181pt.
+<bias.jpg, id=165, 627.34375pt x 476.78125pt>
+File: bias.jpg Graphic file (type jpg)
+ <use bias.jpg>
+Package pdftex.def Info: bias.jpg used on input line 112.
+(pdftex.def)             Requested size: 144.28603pt x 109.65738pt.
  [17
 
+ <./bias.jpg>]
+File: bias.jpg Graphic file (type jpg)
+
+<use bias.jpg>
+Package pdftex.def Info: bias.jpg used on input line 112.
+(pdftex.def)             Requested size: 144.28603pt x 109.65738pt.
+ [18
+
 ]
-File: perc.png Graphic file (type png)
- <use perc.png>
-Package pdftex.def Info: perc.png used on input line 102.
-(pdftex.def)             Requested size: 185.49356pt x 91.42181pt.
+File: bias.jpg Graphic file (type jpg)
+ <use bias.jpg>
+Package pdftex.def Info: bias.jpg used on input line 112.
+(pdftex.def)             Requested size: 144.28603pt x 109.65738pt.
+ [19
 
-[18
-
-] <rectifier.png, id=175, 220.825pt x 160.6pt>
-File: rectifier.png Graphic file (type png)
- <use rectifier.png>
-Package pdftex.def Info: rectifier.png used on input line 113.
-(pdftex.def)             Requested size: 92.74585pt x 67.45152pt.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 113.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 113.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 113.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 113.
-LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
-(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 113.
-LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 113.
-
-LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <7> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 113.
-
-LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <5> not available
-(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 113.
-
-
-Overfull \vbox (7.18196pt too high) detected at line 113
- []
-
-[19
-
- <./rectifier.png>]
-File: rectifier.png Graphic file (type png)
- <use rectifier.png>
-Package pdftex.def Info: rectifier.png used on input line 113.
-(pdftex.def)             Requested size: 92.74585pt x 67.45152pt.
-
-Overfull \vbox (7.18196pt too high) detected at line 113
- []
+]
+<perceptron.png, id=184, 853.1875pt x 514.92375pt>
+File: perceptron.png Graphic file (type png)
+ <use perceptron.png>
+Package pdftex.def Info: perceptron.png used on input line 119.
+(pdftex.def)             Requested size: 307.14726pt x 185.3724pt.
 
 [20
 
-]
+ <./perceptron.png>] <rectifier.png, id=192, 1027.84pt x 747.79375pt>
 File: rectifier.png Graphic file (type png)
- <use rectifier.png>
-Package pdftex.def Info: rectifier.png used on input line 113.
-(pdftex.def)             Requested size: 92.74585pt x 67.45152pt.
 
-Overfull \vbox (7.18196pt too high) detected at line 113
+<use rectifier.png>
+Package pdftex.def Info: rectifier.png used on input line 129.
+(pdftex.def)             Requested size: 185.00322pt x 134.59706pt.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 129.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 129.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 129.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <7> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 129.
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <5> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 129.
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <10> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 129.
+
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <7> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 129.
+
+LaTeX Font Info:    Font shape `T1/lmss/bx/it' in size <5> not available
+(Font)              Font shape `T1/lmss/bx/sl' tried instead on input line 129.
+
+
+Overfull \vbox (2.14592pt too high) detected at line 129
  []
 
 [21
 
-]
+ <./rectifier.png>]
 File: rectifier.png Graphic file (type png)
  <use rectifier.png>
-Package pdftex.def Info: rectifier.png used on input line 113.
-(pdftex.def)             Requested size: 92.74585pt x 67.45152pt.
+Package pdftex.def Info: rectifier.png used on input line 129.
+(pdftex.def)             Requested size: 185.00322pt x 134.59706pt.
 
-Overfull \vbox (7.18196pt too high) detected at line 113
+Overfull \vbox (2.14592pt too high) detected at line 129
  []
 
 [22
 
-]
-File: rectifier.png Graphic file (type png)
- <use rectifier.png>
-Package pdftex.def Info: rectifier.png used on input line 113.
-(pdftex.def)             Requested size: 92.74585pt x 67.45152pt.
+] <logistic.png, id=206, 486.81876pt x 324.21124pt>
+File: logistic.png Graphic file (type png)
+ <use logistic.png>
+Package pdftex.def Info: logistic.png used on input line 139.
+(pdftex.def)             Requested size: 175.25461pt x 116.71596pt.
 
-Overfull \vbox (7.18196pt too high) detected at line 113
+Overfull \vbox (2.54126pt too high) detected at line 139
  []
 
 [23
 
-]
-File: rectifier.png Graphic file (type png)
- <use rectifier.png>
-Package pdftex.def Info: rectifier.png used on input line 113.
-(pdftex.def)             Requested size: 92.74585pt x 67.45152pt.
+ <./logistic.png (PNG copy)>]
+File: logistic.png Graphic file (type png)
+ <use logistic.png>
+Package pdftex.def Info: logistic.png used on input line 139.
+(pdftex.def)             Requested size: 175.25461pt x 116.71596pt.
 
-Overfull \vbox (7.18196pt too high) detected at line 113
+Overfull \vbox (2.54126pt too high) detected at line 139
  []
 
 [24
 
-] [25
+]
+File: logistic.png Graphic file (type png)
+ <use logistic.png>
+Package pdftex.def Info: logistic.png used on input line 139.
+(pdftex.def)             Requested size: 175.25461pt x 116.71596pt.
 
-] [26
+Overfull \vbox (2.54126pt too high) detected at line 139
+ []
 
-] [27
+[25
 
-] (./graddescent.toc) [28
+] (./graddescent.toc) [26
 
 ]
-<mnist_100_digits.png, id=241, 153.57375pt x 122.859pt>
+<mnist_100_digits.png, id=238, 153.57375pt x 122.859pt>
 File: mnist_100_digits.png Graphic file (type png)
 
 <use mnist_100_digits.png>
-Package pdftex.def Info: mnist_100_digits.png used on input line 132.
+Package pdftex.def Info: mnist_100_digits.png used on input line 152.
 (pdftex.def)             Requested size: 153.57336pt x 122.85867pt.
+ [27
+
+ <./mnist_100_digits.png>]
+<load.png, id=247, 618.31pt x 61.22874pt>
+File: load.png Graphic file (type png)
+ <use load.png>
+Package pdftex.def Info: load.png used on input line 167.
+(pdftex.def)             Requested size: 259.68843pt x 25.71588pt.
+ [28
+
+ <./load.png>]
+File: load.png Graphic file (type png)
+
+<use load.png>
+Package pdftex.def Info: load.png used on input line 167.
+(pdftex.def)             Requested size: 259.68843pt x 25.71588pt.
  [29
 
- <./mnist_100_digits.png>] [30
-
-] [31
-
-] [32
+]
+File: load.png Graphic file (type png)
+ <use load.png>
+Package pdftex.def Info: load.png used on input line 167.
+(pdftex.def)             Requested size: 259.68843pt x 25.71588pt.
+ [30
 
 ]
-[33
+File: load.png Graphic file (type png)
+ <use load.png>
+Package pdftex.def Info: load.png used on input line 167.
+(pdftex.def)             Requested size: 259.68843pt x 25.71588pt.
+ [31
 
-] [34
-
-] [35
-
-] <goal.png, id=288, 539.01375pt x 448.67625pt>
+]
+<goal.png, id=274, 539.01375pt x 448.67625pt>
 File: goal.png Graphic file (type png)
  <use goal.png>
-Package pdftex.def Info: goal.png used on input line 152.
+Package pdftex.def Info: goal.png used on input line 175.
 (pdftex.def)             Requested size: 194.0448pt x 161.52332pt.
-
-[36
+ [32
 
  <./goal.png>]
-Overfull \hbox (8.17577pt too wide) in paragraph at lines 165--165
+Overfull \hbox (8.17577pt too wide) in paragraph at lines 188--188
 [][][][][][][][] 
  []
 
-[37
+[33
 
 ]
 \tf@nav=\write10
@@ -2181,8 +2210,8 @@ AED: lastpage setting LastPage
 Package caption Warning: Unused \captionsetup[sub] on input line 340.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 166.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 166.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 189.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
 (./graddescent.aux
 *************************************************
 * pdfbase warning: "rerun"
@@ -2190,8 +2219,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 166.
 * Rerun to get internal references right!
 *************************************************
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 166.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 166.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 189.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 189.
 
 
 Package rerunfilecheck Warning: File `graddescent.out' has changed.
@@ -2199,31 +2228,31 @@ Package rerunfilecheck Warning: File `graddescent.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `graddescent.out':
-(rerunfilecheck)             Before: 6B89044D92531E8786DA22841485E7D1;377
-(rerunfilecheck)             After:  2994861203D886217FF22F0FE361FD79;377.
+(rerunfilecheck)             Before: 2FAF293EB6C1D95D0E7E21341DC5111A;377
+(rerunfilecheck)             After:  90BB512F5311E9B8B7D69B4024E4EF4D;377.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 39170 strings out of 492995
- 748402 string characters out of 6132704
- 1018270 words of memory out of 5000000
- 41672 multiletter control sequences out of 15000+600000
- 120600 words of font info for 123 fonts, out of 8000000 for 9000
+ 39226 strings out of 492995
+ 749673 string characters out of 6132704
+ 1018295 words of memory out of 5000000
+ 41724 multiletter control sequences out of 15000+600000
+ 120935 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,16n,99p,10435b,857s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Outline0.2.2.36} has been referenced but does not
- exist, replaced by a fixed one
+pdfTeX warning (dest): name{Navigation34} has been referenced but does not ex
+ist, replaced by a fixed one
 
-pdfTeX warning (dest): name{Outline0.2.1.28} has been referenced but does not e
+pdfTeX warning (dest): name{Outline0.2.2.34} has been referenced but does not e
 xist, replaced by a fixed one
 
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/te
-xlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2017
-/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2017/texmf-dis
-t/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2017/texmf-dist/fonts/en
-c/dvips/lm/lm-rm.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/loca
+l/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2017
+/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2017/texmf-dist/fo
+nts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dv
+ips/lm/lm-mathit.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/
 lmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmss10.pfb></usr/loc
 al/texlive/2017/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive
@@ -2231,11 +2260,12 @@ al/texlive/2017/texmf-dist/fonts/type1/public/lm/lmss12.pfb></usr/local/texlive
 -dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2017/texmf-dist/fo
 nts/type1/public/lm/lmsso10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
 /public/lm/lmsso8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm
-/lmsy10.pfb>
-Output written on graddescent.pdf (37 pages, 286093 bytes).
+/lmsy10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy6.pfb
+>
+Output written on graddescent.pdf (33 pages, 488837 bytes).
 PDF statistics:
- 364 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 83 named destinations out of 1000 (max. 500000)
- 31873 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 352 PDF objects out of 1000 (max. 8388607)
+ 278 compressed objects within 3 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 31904 words of extra memory for PDF output out of 35830 (max. 10000000)
 
