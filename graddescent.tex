@@ -35,10 +35,10 @@ Let's say I'm deciding on a given day whether or not to go to  an Edmonton Oiler
 \item Do I have the time to go?
 \item Do I care about the team they're playing?
 \end{itemize} \pause 
-We'll make my decision by encoding each possible input as a vector $\bar{x}$: \pause
+We'll make my decision by encoding each possible input as a vector $\bar{\bold{x}}$: \pause
 \begin{table} \center 
 \begin{tabular}{ccc|c}
-Ticket Prices & Availability & Interest & $\bar{x}$\\ \hline 
+Ticket Prices & Availability & Interest & $\bar{\bold{x}}$\\ \hline 
 Cheap & Yes & Yes & $(1,1,1)$ \\
 Cheap & No & No & $(1,0,0)$ \\
 Cheap & Yes & No & $(1,1,0)$ \\
@@ -52,11 +52,11 @@ Expensive & Yes & No & $(0,1,0)$
 \end{frame}
 
 \begin{frame}{How Will I Make my Decision?}
-Let's say I don't care much about price, but I do care about my availability and interest. In this case, the corresponding weights might be $\bar{w}=(1, 6, 3)$. \pause We can then compute the dot product $\bar{w}\cdot \bar{x}$ for each possible input:  
+Let's say I don't care much about price, but I do care about my availability and interest. In this case, the corresponding weights might be $\bar{\bold{w}}=(1, 6, 3)$. \pause We can then compute the dot product $\bar{\bold{w}}\cdot \bar{\bold{x}}$ for each possible input:  
 \begin{table} 
 \center 
 \begin{tabular}{cccc|c}
-Ticket Prices & Availability & Interest & $\bar{x}$ & $\bar{w}\cdot \bar{x}$ \\ \hline 
+Ticket Prices & Availability & Interest & $\bar{\bold{x}}$ & $\bar{\bold{w}}\cdot \bar{\bold{x}}$ \\ \hline 
 Cheap & Yes & Yes & $(1,1,1)$ & $10$ \\
 Cheap & No & No & $(1,0,0)$ & $1$ \\
 Cheap & Yes & No & $(1,1,0)$ & $7$\\
@@ -72,13 +72,13 @@ We can now define my \textbf{activation threshold}, $t$, which will determine wh
 \end{frame}
 
 \begin{frame}{Formula for Decision Making}
-The general formula for my decision to go to the Oilers game is $$\text{output}=\begin{cases} 0 & \text{ if } \bar{w}\cdot \bar{x}<t \\ 
-1 & \text{ if } \bar{w}\cdot \bar{x}\ge t. \end{cases}$$ \pause 
+The general formula for my decision to go to the Oilers game is $$\text{output}=\begin{cases} 0 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}<t \\ 
+1 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}\ge t. \end{cases}$$ \pause 
 For instance, if $t=9$, we see I'll only go if I'm both available and interested. \pause If $t=7$, I'll also go if the tickets are cheap and I'm available:
 \begin{table} 
 \center 
 \begin{tabular}{cccc|c}
-Ticket Prices & Availability & Interest & $\bar{x}$ & $\bar{x}\cdot \bar{w}$ \\ \hline 
+Ticket Prices & Availability & Interest & $\bar{\bold{x}}$ & $\bar{\bold{x}}\cdot \bar{\bold{w}}$ \\ \hline 
 \textbf{\textcolor{Green}{Cheap}} & \textbf{\textcolor{Green}{Yes}} & \textbf{\textcolor{Green}{Yes}} & $(1,1,1)$ & \textbf{\textcolor{Green}{10}} \\
 Cheap & No & No & $(1,0,0)$ & $1$ \\
 \textbf{\textcolor{Green}{Cheap }}& \textbf{\textcolor{Green}{Yes }}& \textbf{\textcolor{Green}{No}} & $(1,1,0)$ & \textbf{\textcolor{Green}{7}} \\
@@ -103,8 +103,8 @@ Each of these lines collect evidence and are weighted to produce an output. \pau
 \end{frame}
 \subsection{Activation Functions}
 \begin{frame}[c]{Introducing the Bias}
-Instead of comparing our weighted sum to a threshold, we instead \textit{add} a bias, $b$, to our weighted sum. We write this as $\bar{w}\cdot \bar{x}+b$ instead. \pause Then $$\text{output}=\begin{cases} 0 & \text{ if } \bar{w}\cdot \bar{x}+b<0 \\ 
-1 & \text{ if } \bar{w}\cdot \bar{x}+b\ge 0. \end{cases}$$
+Instead of comparing our weighted sum to a threshold, we instead \textit{add} a bias, $b$, to our weighted sum. We write this as $\bar{\bold{w}}\cdot \bar{\bold{x}}+b$ instead. \pause Then $$\text{output}=\begin{cases} 0 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}+b<0 \\ 
+1 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}+b\ge 0. \end{cases}$$
 This is known as the \textit{heaviside step function}. We'll extend our model to multiple outputs soon, but first we'll examine other activation functions. \pause
 \begin{figure}
 \includegraphics[scale=0.23]{bias.jpg} 
@@ -127,21 +127,13 @@ As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a
 \end{figure}
 \end{frame}
 
-\begin{frame}{Supervised Learning}
-In \textbf{supervised learning} problems, we're given a set of training data with labels, which we try to learn. We'll use a generalization of the perceptron with different neurons, for which we try to learn the best possible weights. \pause
-\begin{figure}
-\center
-\includegraphics[scale=0.28]{perceptron.png}
-\caption{\textit{Source: Daniel Alvarez, InTech}}
-\end{figure}
-\end{frame}
-
 
 
 
 \section{Classifying Digits through MNIST}
 \subsection{Defining the Problem}
 \begin{frame}[c]{Example Images}
+In \textbf{supervised learning} problems, we're given a set of training data with labels, which we try to learn. We'll use a generalization of the perceptron with different neurons, for which we try to learn the best possible weights. \pause 
 \begin{figure} 
 \center
 \includegraphics{mnist_100_digits.png}
@@ -172,12 +164,46 @@ We'll build a model from the training images that will learn to classify digits!
 \end{figure}
 \end{frame}
 
-\begin{frame}{Hidden Layer}
-The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12} & \cdots & w_{1,15} \\  w_{21} & w_{22} & \cdots & w_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\  w_{784, 1} & w_{784, 2} & \cdots & w_{784, 15} \end{pmatrix}, \quad \bar{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ \vdots \\ \vdots \\ x_{784} \end{pmatrix}.$$
-We take the dot product of each \textbf{column} with our input vector $\bar{x}$. We then add our bias vector, $\bar{b}$, which is $15\times 1$. We finally apply our activation: $$\bar{h}=\sigma(W^{T}\bar{x}+\bar{b}).$$
-
+\begin{frame}{Extending our Model}
+All of our weights and bias will be initialized from a normal distribution with mean $0$ and standard deviation $1$. 
+\begin{figure}
+\center
+\includegraphics[scale=0.28]{perceptron.png}
+\caption{\textit{Source: Daniel Alvarez, InTech}}
+\end{figure}
 \end{frame}
 
+\begin{frame}{Hidden Layer}
+The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12} & \cdots & w_{1,15} \\  w_{21} & w_{22} & \cdots & w_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\  w_{784, 1} & w_{784, 2} & \cdots & w_{784, 15} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ \vdots \\ \vdots \\ x_{784} \end{pmatrix}.$$
+We take the dot product of each \textbf{column} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$. We finally apply our activation: $$\bold{h}=\sigma(W^{T}\bold{x}+\bold{b}).$$
+\end{frame}
+\begin{frame}{Output Layer}
+We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. To do so, we use a \textbf{softmax} activation. \pause The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ \pause Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{o}=\text{softmax}\left(\hat{W}\bold{h}+\hat{\bold{b}}\right).$$  \pause
+ For instance, $\text{softmax}(\begin{pmatrix} 4 \\ 2 \\ 1   \end{pmatrix})=\begin{pmatrix} 0.8438 \\ 0.1142 \\ 0.0420 \end{pmatrix}$ has max probability $84.38\%$.
+  \end{frame}
+  \begin{frame}{One Hot Encoding}
+Once we've computed the output, we need a way to compare it to our desired result. However, $\bold{o}$ is a $10\times 1$ vector, whereas our desired digit $y_{\text{train}}(\bold{x})$ is a scalar. We therefore encode the digit as a $10\times 1$ vector:  \pause
+\begin{table}
+  \center \begin{tabular}{ccccc}
+  $\begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 0 \\ 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}$ & $\cdots$ & $\begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}$ \\ \hline $0$ & $1$ & $2$ & $\cdots$ & $9$
+  \end{tabular}  
+  \end{table}
+  \vspace{0.025\textheight}
+  \pause
+ The code for this is relatively simple: 
+ \begin{figure}[H] \center \includegraphics[scale=0.54]{onehot.png} \end{figure}
+
+ \end{frame}
+ 
+ \begin{frame}{Negative Log Likelihood}
+ To compute how accurate our model was at predicting a given value, we need a \textbf{loss} function. In this case, it's easiest to use \textit{negative log likelihood}. 
+ \begin{figure}[H] \center \includegraphics[scale=0.15]{neg_log_demo.png}
+ \caption{\textit{Source: LJ Mirand}} \end{figure}
+To compute the loss for an individual training example, $\bold{x}$, with one-hot encoded label $y_{\text{train}}(\bold{x})$, and output $\bold{o}$, we compute $$L(\bold{x})=-y_{\text{train}}(\bold{x})\cdot \log \bold{o}=-\log(o_j),$$ where $j$ is the true label.
+ \end{frame}
+  \begin{frame}{Training Parameters} 
+  Notice, in total we have $784\times 15+15\times 1+10\times 15+10\times 1=11,935$ parameters to train on. \pause Now, how much does our output depend on each of these parameters? \pause To answer this, we need the chain rule from calculus.
+  \end{frame}
 
 \subsection{References}
 \begin{frame}[c]{References}
@@ -186,6 +212,11 @@ We take the dot product of each \textbf{column} with our input vector $\bar{x}$.
 \href{http://neuralnetworksanddeeplearning.com/chap1.html}{\beamergotobutton{Michael Nielsen: Using neural nets to recognize handwritten digits}} \smallskip
 
 \href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \smallskip
+
+\href{http://scs.ryerson.ca/~aharley/vis/fc/}{\beamergotobutton{3d Visualizing a Neural Network}} \smallskip
+
+\href{https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/}{\beamergotobutton{Understanding softmax and the negative log-likelihood}} \smallskip
+
 
 \end{frame}
 \end{document}

@@ -2,6 +2,6 @@
 \beamer@sectionintoc {1}{Decision Making}{2}{0}{1}
 \beamer@subsectionintoc {1}{1}{Perceptrons}{3}{0}{1}
 \beamer@subsectionintoc {1}{2}{Activation Functions}{17}{0}{1}
-\beamer@sectionintoc {2}{Classifying Digits through MNIST}{27}{0}{2}
-\beamer@subsectionintoc {2}{1}{Defining the Problem}{28}{0}{2}
-\beamer@subsectionintoc {2}{2}{References}{37}{0}{2}
+\beamer@sectionintoc {2}{Classifying Digits through MNIST}{25}{0}{2}
+\beamer@subsectionintoc {2}{1}{Defining the Problem}{26}{0}{2}
+\beamer@subsectionintoc {2}{2}{References}{50}{0}{2}
