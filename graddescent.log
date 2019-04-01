@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 APR 2019 01:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  1 APR 2019 14:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2233,51 +2233,102 @@ Package pdftex.def Info: perceptron.png used on input line 174.
 
 ] [41
 
-] [42
-
 ]
-<onehot.png, id=346, 519.9425pt x 43.16125pt>
+<onehot.png, id=340, 519.9425pt x 43.16125pt>
 File: onehot.png Graphic file (type png)
  <use onehot.png>
-Package pdftex.def Info: onehot.png used on input line 196.
+Package pdftex.def Info: onehot.png used on input line 197.
 (pdftex.def)             Requested size: 280.76477pt x 23.30672pt.
- [43
+ [42
 
  <./onehot.png>]
 File: onehot.png Graphic file (type png)
  <use onehot.png>
-Package pdftex.def Info: onehot.png used on input line 196.
+Package pdftex.def Info: onehot.png used on input line 197.
 (pdftex.def)             Requested size: 280.76477pt x 23.30672pt.
- [44
+ [43
 
 ]
 File: onehot.png Graphic file (type png)
  <use onehot.png>
-Package pdftex.def Info: onehot.png used on input line 196.
+Package pdftex.def Info: onehot.png used on input line 197.
 (pdftex.def)             Requested size: 280.76477pt x 23.30672pt.
- [45
+ [44
 
 ]
-<neg_log_demo.png, id=367, 2213.26875pt x 655.44875pt>
+<neg_log_demo.png, id=361, 2213.26875pt x 655.44875pt>
 File: neg_log_demo.png Graphic file (type png)
  <use neg_log_demo.png>
-Package pdftex.def Info: neg_log_demo.png used on input line 203.
+Package pdftex.def Info: neg_log_demo.png used on input line 204.
 (pdftex.def)             Requested size: 331.976pt x 98.31306pt.
 
-[46
+[45
 
- <./neg_log_demo.png>] [47
-
-] [48
-
-] [49
+ <./neg_log_demo.png>]
+File: neg_log_demo.png Graphic file (type png)
+ <use neg_log_demo.png>
+Package pdftex.def Info: neg_log_demo.png used on input line 204.
+(pdftex.def)             Requested size: 331.976pt x 98.31306pt.
+ [46
 
 ]
-Overfull \hbox (8.17577pt too wide) in paragraph at lines 221--221
-[][][][][][][][] 
+File: neg_log_demo.png Graphic file (type png)
+ <use neg_log_demo.png>
+Package pdftex.def Info: neg_log_demo.png used on input line 204.
+(pdftex.def)             Requested size: 331.976pt x 98.31306pt.
+
+[47
+
+] <neg_log.png, id=381, 462.528pt x 344.0052pt>
+File: neg_log.png Graphic file (type png)
+ <use neg_log.png>
+Package pdftex.def Info: neg_log.png used on input line 209.
+(pdftex.def)             Requested size: 208.13567pt x 154.8009pt.
+ [48
+
+ <./neg_log.png>] <fullpic.jpg, id=389, 1204.5pt x 903.375pt>
+File: fullpic.jpg Graphic file (type jpg)
+ <use fullpic.jpg>
+Package pdftex.def Info: fullpic.jpg used on input line 214.
+(pdftex.def)             Requested size: 216.80064pt x 162.60048pt.
+
+[49
+
+ <./fullpic.jpg>]
+Overfull \vbox (4.87915pt too high) detected at line 221
  []
 
 [50
+
+]
+Overfull \vbox (4.87915pt too high) detected at line 221
+ []
+
+[51
+
+]
+Overfull \vbox (4.87915pt too high) detected at line 221
+ []
+
+[52
+
+]
+Overfull \vbox (4.87915pt too high) detected at line 221
+ []
+
+[53
+
+]
+Overfull \hbox (8.17577pt too wide) in paragraph at lines 240--240
+[][][][][][][][] 
+ []
+
+
+Overfull \hbox (8.52458pt too wide) in paragraph at lines 240--240
+[][][][][][][][] 
+ []
+
+[54
 
 ]
 \tf@nav=\write10
@@ -2295,8 +2346,8 @@ AED: lastpage setting LastPage
 Package caption Warning: Unused \captionsetup[sub] on input line 340.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 222.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 222.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 241.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 241.
 (./graddescent.aux
 *************************************************
 * pdfbase warning: "rerun"
@@ -2304,8 +2355,8 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 222.
 * Rerun to get internal references right!
 *************************************************
 )
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 222.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 222.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 241.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 241.
 
 
 Package rerunfilecheck Warning: File `graddescent.out' has changed.
@@ -2313,21 +2364,21 @@ Package rerunfilecheck Warning: File `graddescent.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `graddescent.out':
-(rerunfilecheck)             Before: 9607D49B5587FA217C9FD16D1F86304D;377
-(rerunfilecheck)             After:  639F5E5AE2238A52DFD3A4F235794970;377.
+(rerunfilecheck)             Before: 6A4F1F23878CA2387E5231D5E3627FFC;377
+(rerunfilecheck)             After:  3D5B063EF21C1791FC45DAB27617E62D;377.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 39300 strings out of 492995
- 750577 string characters out of 6132704
- 1018435 words of memory out of 5000000
- 41759 multiletter control sequences out of 15000+600000
+ 39326 strings out of 492995
+ 750905 string characters out of 6132704
+ 1019436 words of memory out of 5000000
+ 41775 multiletter control sequences out of 15000+600000
  132244 words of font info for 132 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,18n,99p,10435b,857s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Outline0.2.2.49} has been referenced but does not
+pdfTeX warning (dest): name{Outline0.2.2.53} has been referenced but does not
  exist, replaced by a fixed one
 
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/loca
@@ -2345,10 +2396,10 @@ ublic/lm/lmsso10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/
 lmsso8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 ></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/loca
 l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on graddescent.pdf (50 pages, 675769 bytes).
+Output written on graddescent.pdf (54 pages, 807467 bytes).
 PDF statistics:
- 477 PDF objects out of 1000 (max. 8388607)
- 379 compressed objects within 4 object streams
- 108 named destinations out of 1000 (max. 500000)
- 33962 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 508 PDF objects out of 1000 (max. 8388607)
+ 402 compressed objects within 5 object streams
+ 116 named destinations out of 1000 (max. 500000)
+ 33972 words of extra memory for PDF output out of 35830 (max. 10000000)
 

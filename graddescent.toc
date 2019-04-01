@@ -4,4 +4,4 @@
 \beamer@subsectionintoc {1}{2}{Activation Functions}{17}{0}{1}
 \beamer@sectionintoc {2}{Classifying Digits through MNIST}{25}{0}{2}
 \beamer@subsectionintoc {2}{1}{Defining the Problem}{26}{0}{2}
-\beamer@subsectionintoc {2}{2}{References}{50}{0}{2}
+\beamer@subsectionintoc {2}{2}{References}{54}{0}{2}

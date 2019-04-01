@@ -174,12 +174,13 @@ All of our weights and bias will be initialized from a normal distribution with 
 \end{frame}
 
 \begin{frame}{Hidden Layer}
-The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12} & \cdots & w_{1,15} \\  w_{21} & w_{22} & \cdots & w_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\ \vdots & \vdots & \vdots & \vdots \\  w_{784, 1} & w_{784, 2} & \cdots & w_{784, 15} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ \vdots \\ \vdots \\ x_{784} \end{pmatrix}.$$
-We take the dot product of each \textbf{column} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$. We finally apply our activation: $$\bold{h}=\sigma(W^{T}\bold{x}+\bold{b}).$$
+The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$
+We take the dot product of each \textbf{row} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$. We finally apply our activation: $$\bold{h}=\sigma(W\bold{x}+\bold{b}).$$
+Notice the sigmoid function is applied component wise.
 \end{frame}
 \begin{frame}{Output Layer}
-We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. To do so, we use a \textbf{softmax} activation. \pause The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ \pause Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{o}=\text{softmax}\left(\hat{W}\bold{h}+\hat{\bold{b}}\right).$$  \pause
- For instance, $\text{softmax}(\begin{pmatrix} 4 \\ 2 \\ 1   \end{pmatrix})=\begin{pmatrix} 0.8438 \\ 0.1142 \\ 0.0420 \end{pmatrix}$ has max probability $84.38\%$.
+We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. To do so, we use a \textbf{softmax} activation. \pause The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{f}=\hat{W}\bold{h}+\bold{b}, \quad \bold{o}=\text{softmax}\left(\bold{f}\right).$$  
+% For instance, $\text{softmax}(\begin{pmatrix} 4 \\ 2 \\ 1   \end{pmatrix})=\begin{pmatrix} 0.8438 \\ 0.1142 \\ 0.0420 \end{pmatrix}$ has max probability $84.38\%$.
   \end{frame}
   \begin{frame}{One Hot Encoding}
 Once we've computed the output, we need a way to compare it to our desired result. However, $\bold{o}$ is a $10\times 1$ vector, whereas our desired digit $y_{\text{train}}(\bold{x})$ is a scalar. We therefore encode the digit as a $10\times 1$ vector:  \pause
@@ -196,13 +197,27 @@ Once we've computed the output, we need a way to compare it to our desired resul
  \end{frame}
  
  \begin{frame}{Negative Log Likelihood}
- To compute how accurate our model was at predicting a given value, we need a \textbf{loss} function. In this case, it's easiest to use \textit{negative log likelihood}. 
+ To compute how accurate our model was at predicting a given value, we need a \textbf{loss} function. In this case, it's easiest to use \textit{negative log likelihood}.  \pause
  \begin{figure}[H] \center \includegraphics[scale=0.15]{neg_log_demo.png}
- \caption{\textit{Source: LJ Mirand}} \end{figure}
+ \caption{\textit{Source: LJ Mirand}} \end{figure} \pause 
 To compute the loss for an individual training example, $\bold{x}$, with one-hot encoded label $y_{\text{train}}(\bold{x})$, and output $\bold{o}$, we compute $$L(\bold{x})=-y_{\text{train}}(\bold{x})\cdot \log \bold{o}=-\log(o_j),$$ where $j$ is the true label.
  \end{frame}
-  \begin{frame}{Training Parameters} 
-  Notice, in total we have $784\times 15+15\times 1+10\times 15+10\times 1=11,935$ parameters to train on. \pause Now, how much does our output depend on each of these parameters? \pause To answer this, we need the chain rule from calculus.
+ \begin{frame}{Graph of Negative Log}
+Recall $L(\bold{x})=-\log(o_j)$. Since $o_j$ is between $0$ and $1$, we can graph the function, noting it approaches $0$ as $o_j\to 1$, and goes to $\infty$ as $o_j\to 0$.
+\begin{figure}[H] \center \includegraphics[scale=0.45]{neg_log.png}
+\caption{\textit{Source:  LJ Mirand}}\end{figure}
+ \end{frame}
+ \begin{frame}{Summarizing the Loss Function}
+ \begin{figure}[H] \center \includegraphics[scale=0.18]{fullpic.jpg}
+ \caption{\textit{Source: Micheleen Harris}}
+ \end{figure}
+ \end{frame}
+  \begin{frame}{Backpropagation} 
+In our hidden layer, we have $784\times 15+15\times 1=11,775$ weights and biases to train on. In the output layer, we only have $15\times 10+10\times 1=160$. \pause We'll answer the question: how much does our loss function depend on these parameters?  To answer this, we need the chain rule from calculus: \pause
+
+$$L=-\log \left(o_j\right), \quad o_j=\frac{e^{f_j}}{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}.$$
+Then $\frac{\partial L}{\partial f_j}=\frac{\partial L}{\partial o_j}\frac{\partial o_j}{\partial f_j}=-\frac{1}{o_j}\frac{\partial o_j}{\partial f_j}$. Using the quotient rule and some algebra, \pause \begin{align*} \frac{\partial L}{\partial f_j}&=-\frac{1}{o_j}\frac{\left(e^{f_1}+\cdots+e^{f_{10}}\right)e^{f_j}-e^{f_j}e^{f_j}}{\left(e^{f_1}+\cdots+e^{f_{10}}\right)^2} \\ &=-\frac{e^{f_1}+\cdots+e^{f_{10}}}{e^{f_j}}\cdot \frac{e^{f_j}\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}-e^{f_j}\right)}{\left(e^{f_1}+\cdots+e^{f_{10}}\right)^2} \\ &=-\frac{e^{f_1}+\cdots+e^{f_{10}}-e^{f_j}}{e^{f_1}+\cdots+e^{f_{10}}}=-\left(1-o_j\right)=o_j-1. \end{align*}
+
   \end{frame}
 
 \subsection{References}
@@ -211,11 +226,15 @@ To compute the loss for an individual training example, $\bold{x}$, with one-hot
 
 \href{http://neuralnetworksanddeeplearning.com/chap1.html}{\beamergotobutton{Michael Nielsen: Using neural nets to recognize handwritten digits}} \smallskip
 
-\href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \smallskip
+\href{https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/}{\beamergotobutton{LJ Mirand: Understanding softmax and the negative log-likelihood}} \smallskip
+
+\href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \medskip
+
+
+
+
 
 \href{http://scs.ryerson.ca/~aharley/vis/fc/}{\beamergotobutton{3d Visualizing a Neural Network}} \smallskip
-
-\href{https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/}{\beamergotobutton{Understanding softmax and the negative log-likelihood}} \smallskip
 
 
 \end{frame}
