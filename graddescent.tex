@@ -9,6 +9,7 @@ parskip=half-, t]{beamer}
 \titlegraphic{\includegraphics[height=0.09\textwidth]{uofa.png}}
 \title[Artificial Intelligence for Beginners]{Gradient Descent}
 \subtitle{Towards Neural Networks}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \author[Justin Stevens]{\large Justin Stevens \\ \large Undergraduate AI Society \\  April 2nd, 2019} % 
 \date{}
 \setbeamertemplate{button}{\tikz
@@ -155,7 +156,7 @@ In \textbf{supervised learning} problems, we're given a set of training data wit
 \end{itemize}
 We'll build a model from the training images that will learn to classify digits!
 \end{frame}
-
+\subsection{Neural Networks}
 \begin{frame}{What we're building towards}
 \begin{figure}
 \center
@@ -163,7 +164,7 @@ We'll build a model from the training images that will learn to classify digits!
 \caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits. (\textit{Source: Nielsen}) }
 \end{figure}
 \end{frame}
-
+\subsection{Randomizing Weights and Biases}
 \begin{frame}{Extending our Model}
 All of our weights and bias will be initialized from a normal distribution with mean $0$ and standard deviation $1$. 
 \begin{figure}
@@ -172,14 +173,14 @@ All of our weights and bias will be initialized from a normal distribution with 
 \caption{\textit{Source: Daniel Alvarez, InTech}}
 \end{figure}
 \end{frame}
-
 \begin{frame}{Hidden Layer}
 The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$
 We take the dot product of each \textbf{row} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$. We finally apply our activation: $$\bold{h}=\sigma(W\bold{x}+\bold{b}).$$
 Notice the sigmoid function is applied component wise.
 \end{frame}
+\subsection{Softmax and One-Hot Encoding}
 \begin{frame}{Output Layer}
-We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. To do so, we use a \textbf{softmax} activation. \pause The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{f}=\hat{W}\bold{h}+\bold{b}, \quad \bold{o}=\text{softmax}\left(\bold{f}\right).$$  
+We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. To do so, we use a \textbf{softmax} activation. The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{f}=\hat{W}\bold{h}+\bold{b}, \quad \bold{o}=\text{softmax}\left(\bold{f}\right).$$  
 % For instance, $\text{softmax}(\begin{pmatrix} 4 \\ 2 \\ 1   \end{pmatrix})=\begin{pmatrix} 0.8438 \\ 0.1142 \\ 0.0420 \end{pmatrix}$ has max probability $84.38\%$.
   \end{frame}
   \begin{frame}{One Hot Encoding}
@@ -195,7 +196,7 @@ Once we've computed the output, we need a way to compare it to our desired resul
  \begin{figure}[H] \center \includegraphics[scale=0.54]{onehot.png} \end{figure}
 
  \end{frame}
- 
+ \subsection{Loss Function}
  \begin{frame}{Negative Log Likelihood}
  To compute how accurate our model was at predicting a given value, we need a \textbf{loss} function. In this case, it's easiest to use \textit{negative log likelihood}.  \pause
  \begin{figure}[H] \center \includegraphics[scale=0.15]{neg_log_demo.png}
@@ -212,13 +213,52 @@ Recall $L(\bold{x})=-\log(o_j)$. Since $o_j$ is between $0$ and $1$, we can grap
  \caption{\textit{Source: Micheleen Harris}}
  \end{figure}
  \end{frame}
-  \begin{frame}{Backpropagation} 
+ \subsection{Gradient Descent}
+ \begin{frame}{Gradient Descent Intuition}
+Our goal is to minimize loss with respect to weights and biases. To simplify the model, let's assume $C$ is a function of two variables: $v_1$ and $v_2$. 
+\begin{figure}
+\includegraphics[scale=0.36]{valley.png}
+\caption{\textit{Source: Nielsen}}
+\end{figure}
+ \end{frame}
+ \begin{frame}{Gradient Descent II}
+ We see how much $C$ changes as we nudge $v_1$ and $v_2$. Approximating, $$\Delta C\approx \frac{\partial C}{\partial v_1}\Delta v_1+\frac{\partial C}{\partial v_2}\Delta v_2.$$ \pause We  find the optimal way to adjust $\Delta v_1$ and $\Delta v_2$ so that $\Delta C$ is negative. We define $\Delta v=\binom{\Delta v_1}{\Delta v_2}$ and the \textbf{gradient} vector $\nabla C=\begin{pmatrix} \frac{\partial C}{\partial v_1} & \frac{\partial C}{\partial v_2} \end{pmatrix}^{T}.$\pause 
+ Therefore, $$\Delta C\approx \nabla C\cdot \Delta v.$$ \pause By the Cauchy-Schwartz inequality, the direction of greatest descent is $\Delta v=-\lambda \nabla C$. In this case, $\Delta C\approx \nabla C\cdot -\lambda \nabla C=-\lambda \norm{\nabla C}^2\ll 0$. \pause 
+ 
+ \vspace{0.04\textheight}
+ We therefore update $v\to v'=v-\lambda \nabla C$, where $\lambda$ is the \textbf{learning rate}. \pause
+ 
+We iterate this process in the hopes of finding a local minimum of $C$. This process can fairly easily generalize from $2$ variables to $n$ variables if we wish. 
+ \end{frame}
+ \begin{frame}[c]{Gradient Descent III}
+ \begin{figure}[H] \center
+ \includegraphics[scale=0.32]{valley_with_ball.png}
+ \caption{\textit{Source: Nielsen}}
+ \end{figure}
+ 
+ \end{frame}
+ \subsection{Backpropagation}
+  \begin{frame}{Backpropagation Part I}
 In our hidden layer, we have $784\times 15+15\times 1=11,775$ weights and biases to train on. In the output layer, we only have $15\times 10+10\times 1=160$. \pause We'll answer the question: how much does our loss function depend on these parameters?  To answer this, we need the chain rule from calculus: \pause
 
 $$L=-\log \left(o_j\right), \quad o_j=\frac{e^{f_j}}{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}.$$
 Then $\frac{\partial L}{\partial f_j}=\frac{\partial L}{\partial o_j}\frac{\partial o_j}{\partial f_j}=-\frac{1}{o_j}\frac{\partial o_j}{\partial f_j}$. Using the quotient rule and some algebra, \pause \begin{align*} \frac{\partial L}{\partial f_j}&=-\frac{1}{o_j}\frac{\left(e^{f_1}+\cdots+e^{f_{10}}\right)e^{f_j}-e^{f_j}e^{f_j}}{\left(e^{f_1}+\cdots+e^{f_{10}}\right)^2} \\ &=-\frac{e^{f_1}+\cdots+e^{f_{10}}}{e^{f_j}}\cdot \frac{e^{f_j}\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}-e^{f_j}\right)}{\left(e^{f_1}+\cdots+e^{f_{10}}\right)^2} \\ &=-\frac{e^{f_1}+\cdots+e^{f_{10}}-e^{f_j}}{e^{f_1}+\cdots+e^{f_{10}}}=-\left(1-o_j\right)=o_j-1. \end{align*}
 
   \end{frame}
+  \begin{frame}{Backpropagation Part II}
+$$L=-\log \left(o_j\right), \quad o_j=\frac{e^{f_j}}{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}.$$ \pause  If $i\neq j$, by the chain rule $\frac{\partial L}{\partial f_i}=\frac{\partial L}{\partial o_j}\frac{\partial o_j}{\partial f_i}=-\frac{1}{o_j}\frac{\partial o_j}{\partial f_i}.$ \pause Using the quotient rule, \begin{align*} \frac{\partial L}{\partial f_i} &=-\frac{1}{o_j}\cdot \frac{-e^{f_j}e^{f_i}}{\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}\right)^2} \\ &=\frac{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}{e^{f_j}}\cdot \frac{e^{f_j}e^{f_i}}{\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}\right)^2} \\ &=\frac{e^{f_i}}{e^{f_1}+\cdots+e^{f_{10}}}=o_i. \end{align*} \pause
+We've now computed how much our loss function depends upon the final activations before applying the softmax.  We now go back a layer and see how much $L$ depends upon $\hat{W}$ and $\hat{b}$, and store these results in a gradient.
+\end{frame}
+\begin{frame}{Backpropagation Part III}
+We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \vspace{0.025\textheight} \pause 
+
+By matrix multiplication, $f_k=\hat{w}_{k1}h_1+\hat{w}_{k2}h_2+\cdots+\hat{w}_{k,15}h_{15}+b_k$. \pause Therefore, $\displaystyle \frac{\partial L}{\partial \hat{w}_{k\ell}}=\sum_{i=i}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{w}_{k\ell }}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{w}_{k\ell}}=\begin{cases} o_km_{\ell} & \text{ if } k\neq j \\ 
+\left(o_k-1\right)m_{\ell} & \text{ if } k=j \end{cases}$. \pause We can similarly see that $\displaystyle \frac{\partial L}{\partial b_k}=\sum_{i=1}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial b_k}=\begin{cases} o_k & \text{ if } k\neq j \\ o_k-1&  \text{ if } k=j. \end{cases}$. \pause \vspace{0.025\textheight}
+
+We store these results as the first $160$ entries in a gradient $\nabla L$. The key idea of back-propagation is we continually \textbf{propagate the error backwards} through the neural network, adding new terms as we go.
+
+\end{frame}
+
 
 \subsection{References}
 \begin{frame}[c]{References}

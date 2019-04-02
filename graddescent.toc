@@ -4,4 +4,10 @@
 \beamer@subsectionintoc {1}{2}{Activation Functions}{17}{0}{1}
 \beamer@sectionintoc {2}{Classifying Digits through MNIST}{25}{0}{2}
 \beamer@subsectionintoc {2}{1}{Defining the Problem}{26}{0}{2}
-\beamer@subsectionintoc {2}{2}{References}{54}{0}{2}
+\beamer@subsectionintoc {2}{2}{Neural Networks}{34}{0}{2}
+\beamer@subsectionintoc {2}{3}{Randomizing Weights and Biases}{35}{0}{2}
+\beamer@subsectionintoc {2}{4}{Softmax and One-Hot Encoding}{37}{0}{2}
+\beamer@subsectionintoc {2}{5}{Loss Function}{44}{0}{2}
+\beamer@subsectionintoc {2}{6}{Gradient Descent}{49}{0}{2}
+\beamer@subsectionintoc {2}{7}{Backpropagation}{57}{0}{2}
+\beamer@subsectionintoc {2}{8}{References}{70}{0}{2}
