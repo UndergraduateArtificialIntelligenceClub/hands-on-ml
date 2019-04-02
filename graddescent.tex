@@ -129,10 +129,7 @@ As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a
 \end{frame}
 
 
-
-
 \section{Classifying Digits through MNIST}
-\subsection{Defining the Problem}
 \begin{frame}[c]{Example Images}
 In \textbf{supervised learning} problems, we're given a set of training data with labels, which we try to learn. We'll use a generalization of the perceptron with different neurons, for which we try to learn the best possible weights. \pause 
 \begin{figure} 
@@ -180,7 +177,7 @@ Notice the sigmoid function is applied component wise.
 \end{frame}
 \subsection{Softmax and One-Hot Encoding}
 \begin{frame}{Output Layer}
-We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. To do so, we use a \textbf{softmax} activation. The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{f}=\hat{W}\bold{h}+\bold{b}, \quad \bold{o}=\text{softmax}\left(\bold{f}\right).$$  
+We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$. \pause We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \pause We aren't done yet! We want the output to be the probability an image is a specific digit. \pause To do so, we use a \textbf{softmax} activation. The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ Notice the sum of these values will always be $1$. \pause The full computation is $$\bold{f}=\hat{W}\bold{h}+\bold{b}, \quad \bold{o}=\text{softmax}\left(\bold{f}\right).$$  
 % For instance, $\text{softmax}(\begin{pmatrix} 4 \\ 2 \\ 1   \end{pmatrix})=\begin{pmatrix} 0.8438 \\ 0.1142 \\ 0.0420 \end{pmatrix}$ has max probability $84.38\%$.
   \end{frame}
   \begin{frame}{One Hot Encoding}
@@ -235,6 +232,11 @@ We iterate this process in the hopes of finding a local minimum of $C$. This pro
  \includegraphics[scale=0.32]{valley_with_ball.png}
  \caption{\textit{Source: Nielsen}}
  \end{figure}
+ \end{frame}
+ \begin{frame}{Gradient Descent IV}
+ Our general rule for updating weights and biases in our neural network is $$w_k\to w_k'=w_k-\eta \frac{\partial L}{\partial w_k}, \quad b_{\ell}\to b_{\ell}'=b_{\ell}-\eta \frac{\partial L}{\partial b_{\ell}}.$$
+ In practice, updating our weights at every step is subject to stochastic error. \pause Therefore, we approximate our gradient function (which holds all of the partial derivatives) in \textbf{batches} of size $m$ and take their average: $$\nabla L\approx \frac{1}{m}\sum_{i=1}^{m}\nabla L_{X_i}.$$  \pause 
+ We can rewrite our update steps as $\begin{cases} w_k\to & w_k'=w_k-\frac{\eta}{m} \sum_{i=1}^{m} \frac{\partial L_{X_i}}{\partial w_k} \\  b_{\ell}\to & b_{\ell}'=b_{\ell}-\frac{\eta}{m} \sum_{i=1}^{m} \frac{\partial L_{X_i}}{\partial w_k} \end{cases}.$
  
  \end{frame}
  \subsection{Backpropagation}
@@ -252,14 +254,29 @@ We've now computed how much our loss function depends upon the final activations
 \begin{frame}{Backpropagation Part III}
 We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \vspace{0.025\textheight} \pause 
 
-By matrix multiplication, $f_k=\hat{w}_{k1}h_1+\hat{w}_{k2}h_2+\cdots+\hat{w}_{k,15}h_{15}+b_k$. \pause Therefore, $\displaystyle \frac{\partial L}{\partial \hat{w}_{k\ell}}=\sum_{i=i}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{w}_{k\ell }}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{w}_{k\ell}}=\begin{cases} o_km_{\ell} & \text{ if } k\neq j \\ 
-\left(o_k-1\right)m_{\ell} & \text{ if } k=j \end{cases}$. \pause We can similarly see that $\displaystyle \frac{\partial L}{\partial b_k}=\sum_{i=1}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial b_k}=\begin{cases} o_k & \text{ if } k\neq j \\ o_k-1&  \text{ if } k=j. \end{cases}$. \pause \vspace{0.025\textheight}
+By matrix multiplication, $f_k=\hat{w}_{k1}h_1+\hat{w}_{k2}h_2+\cdots+\hat{w}_{k,15}h_{15}+b_k$. \pause Therefore, $\displaystyle \frac{\partial L}{\partial \hat{w}_{k\ell}}=\sum_{i=i}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{w}_{k\ell }}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{w}_{k\ell}}=\begin{cases} o_kh_{\ell} & \text{ if } k\neq j \\ 
+\left(o_k-1\right)h_{\ell} & \text{ if } k=j \end{cases}$. \pause We can similarly see $\displaystyle \frac{\partial L}{\partial b_k}=\sum_{i=1}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial b_k}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial b_k}=\begin{cases} o_k & \text{ if } k\neq j \\ o_k-1&  \text{ if } k=j. \end{cases}$. \pause \vspace{0.025\textheight}
 
-We store these results as the first $160$ entries in a gradient $\nabla L$. The key idea of back-propagation is we continually \textbf{propagate the error backwards} through the neural network, adding new terms as we go.
-
+Finally, we can observe $\frac{\partial f_i}{\partial h_k}=\hat{w}_{ik}$ by the way we set up the matrix. We store all of these values in a gradient table for easy access later. This is a core feature of \textbf{dynamic programming}, which is essential in this program.
 \end{frame}
 
+\begin{frame}{Backpropagation IV}
+Recall in the hidden layer, $h=\sigma(W\bar{x}+\bar{b})$, where  $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$ \pause
+By matrix multiplication, $h_k=\sigma(w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784}+b_k)$. \pause By the chain rule, we note $w_{k\ell}$ is fed into every final layer, therefore \begin{align*} \frac{\partial L}{\partial w_{k\ell}}&=\sum_{i=1}^{10}\frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial h_k}\frac{\partial h_k}{\partial w_{k\ell}} \\ &= \left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\frac{\partial h_k}{\partial w_{k\ell}}.\end{align*}
+\end{frame}
+\begin{frame}{Backpropagation Finale}
+Let $g_k=w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784}+b_k$. Then $h_k=\sigma(g_k)$ hence $$\frac{\partial h_k}{\partial w_{k\ell}}=\frac{\partial h_k}{\partial g_k}\frac{\partial g_k}{\partial w_{k\ell}}.$$ \pause
+Recall $\sigma(z)=\frac{1}{1+e^{-z}}$, so $\frac{d}{dz}\sigma(z)=\frac{e^{-z}}{1+e^{-z}}\cdot \frac{1}{1+e^{-z}}=\left(1-\sigma(z)\right)\sigma(z).$ \pause Then $$\frac{\partial h_k}{\partial w_{k\ell}}=\left(1-\sigma(g_k)\right)\sigma(g_k)\bold{x}_{\ell}.$$ \pause Similarly, we see $\frac{\partial h_k}{\partial b_k}=\left(1-\sigma(g_k)\right)\sigma(g_k)$, since $\frac{\partial g_k}{\partial b_k}=1$. \pause Thus, \begin{align*} \frac{\partial L}{\partial w_{k\ell}}&=\left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\left(1-\sigma(g_k)\right)\sigma(g_k)\bold{x}_{\ell} \\ \frac{\partial L}{\partial b_k}&=\left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\left(1-\sigma(g_k)\right)\sigma(g_k). \end{align*}
+\end{frame}
 
+\section{Improvements}
+\subsection{Overfitting}
+\begin{frame}{Overfitting}
+\begin{figure}[H]
+\includegraphics[scale=0.33]{overfitting.png}
+\caption{\textit{Source: Hacker Noon}}
+\end{figure}
+\end{frame}
 \subsection{References}
 \begin{frame}[c]{References}
 \setbeamertemplate{itemize items}[triangle]
@@ -270,11 +287,14 @@ We store these results as the first $160$ entries in a gradient $\nabla L$. The 
 
 \href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \medskip
 
-
-
+\href{https://www.deeplearningbook.org/}{\beamergotobutton{Deep Learning, Goodfellow et. al.}} \medskip
 
 
 \href{http://scs.ryerson.ca/~aharley/vis/fc/}{\beamergotobutton{3d Visualizing a Neural Network}} \smallskip
+
+\href{https://jed-ai.github.io/py1_gd_animation/}{\beamergotobutton{Visualizing Gradient Descent}} 
+
+\href{https://www.tensorflow.org/tutorials}{\beamergotobutton{Tensorflow Tutorials}} \medskip
 
 
 \end{frame}
