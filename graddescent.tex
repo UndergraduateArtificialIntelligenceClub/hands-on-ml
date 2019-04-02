@@ -171,8 +171,8 @@ All of our weights and bias will be initialized from a normal distribution with 
 \end{figure}
 \end{frame}
 \begin{frame}{Hidden Layer}
-The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$
-We take the dot product of each \textbf{row} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$. We finally apply our activation: $$\bold{h}=\sigma(W\bold{x}+\bold{b}).$$
+The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer. \pause To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$
+We take the dot product of each \textbf{row} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$. \pause We finally apply our activation: $$\bold{h}=\sigma(W\bold{x}+\bold{b}).$$
 Notice the sigmoid function is applied component wise.
 \end{frame}
 \subsection{Softmax and One-Hot Encoding}
@@ -267,6 +267,23 @@ By matrix multiplication, $h_k=\sigma(w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784
 \begin{frame}{Backpropagation Finale}
 Let $g_k=w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784}+b_k$. Then $h_k=\sigma(g_k)$ hence $$\frac{\partial h_k}{\partial w_{k\ell}}=\frac{\partial h_k}{\partial g_k}\frac{\partial g_k}{\partial w_{k\ell}}.$$ \pause
 Recall $\sigma(z)=\frac{1}{1+e^{-z}}$, so $\frac{d}{dz}\sigma(z)=\frac{e^{-z}}{1+e^{-z}}\cdot \frac{1}{1+e^{-z}}=\left(1-\sigma(z)\right)\sigma(z).$ \pause Then $$\frac{\partial h_k}{\partial w_{k\ell}}=\left(1-\sigma(g_k)\right)\sigma(g_k)\bold{x}_{\ell}.$$ \pause Similarly, we see $\frac{\partial h_k}{\partial b_k}=\left(1-\sigma(g_k)\right)\sigma(g_k)$, since $\frac{\partial g_k}{\partial b_k}=1$. \pause Thus, \begin{align*} \frac{\partial L}{\partial w_{k\ell}}&=\left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\left(1-\sigma(g_k)\right)\sigma(g_k)\bold{x}_{\ell} \\ \frac{\partial L}{\partial b_k}&=\left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\left(1-\sigma(g_k)\right)\sigma(g_k). \end{align*}
+\end{frame}
+
+\begin{frame}{Epoch}
+For a high-level overview of what we did,
+\begin{itemize}
+\item For each $i$ in range $\{1, 2, 3, \cdots, m\}$ \pause 
+\begin{itemize}
+\item Performed feed forward on $\bold{x}_i$ to compute $\bold{o}$. \pause 
+\item Compared our predicted result with the actual result to compute a loss using negative log likelihood. \pause 
+\item Performed back propagation to compute gradient and see how much our loss depended upon weights and biases.  \pause 
+\end{itemize}
+\item Average gradients, and apply gradient descent to each component with \textbf{fixed} learning rate $\eta$. 
+\end{itemize}
+This process is one epoch. It's often helpful to pass our data through our training model multiple times to get the best weights and biases. For our optimizer, we'll use ``tf.train.GradientDescentOptimizer(0.2)". \pause
+
+\vspace{0.025\textheight} 
+If we wish to use a \textbf{varied} learning rate, we can use a different optimizer, such as \textit{stochastic gradient descent}. We can then use ``sgd", or an even more optimized version such as ``adam".
 \end{frame}
 
 \section{Improvements}

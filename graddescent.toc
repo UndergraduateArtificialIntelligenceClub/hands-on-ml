@@ -5,10 +5,10 @@
 \beamer@sectionintoc {2}{Classifying Digits through MNIST}{25}{0}{2}
 \beamer@subsectionintoc {2}{1}{Neural Networks}{34}{0}{2}
 \beamer@subsectionintoc {2}{2}{Randomizing Weights and Biases}{35}{0}{2}
-\beamer@subsectionintoc {2}{3}{Softmax and One-Hot Encoding}{37}{0}{2}
-\beamer@subsectionintoc {2}{4}{Loss Function}{45}{0}{2}
-\beamer@subsectionintoc {2}{5}{Gradient Descent}{50}{0}{2}
-\beamer@subsectionintoc {2}{6}{Backpropagation}{61}{0}{2}
-\beamer@sectionintoc {3}{Improvements}{82}{0}{3}
-\beamer@subsectionintoc {3}{1}{Overfitting}{83}{0}{3}
-\beamer@subsectionintoc {3}{2}{References}{84}{0}{3}
+\beamer@subsectionintoc {2}{3}{Softmax and One-Hot Encoding}{39}{0}{2}
+\beamer@subsectionintoc {2}{4}{Loss Function}{47}{0}{2}
+\beamer@subsectionintoc {2}{5}{Gradient Descent}{52}{0}{2}
+\beamer@subsectionintoc {2}{6}{Backpropagation}{63}{0}{2}
+\beamer@sectionintoc {3}{Improvements}{90}{0}{3}
+\beamer@subsectionintoc {3}{1}{Overfitting}{91}{0}{3}
+\beamer@subsectionintoc {3}{2}{References}{92}{0}{3}

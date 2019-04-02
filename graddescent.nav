@@ -36,53 +36,55 @@
 \headcommand {\beamer@subsectionentry {0}{2}{2}{35}{Randomizing Weights and Biases}}\headcommand {\beamer@subsectionpages {34}{34}}
 \headcommand {\slideentry {2}{2}{1}{35/35}{Randomizing Weights and Biases}{0}}
 \headcommand {\beamer@framepages {35}{35}}
-\headcommand {\slideentry {2}{2}{2}{36/36}{Randomizing Weights and Biases}{0}}
-\headcommand {\beamer@framepages {36}{36}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{37}{Softmax and One-Hot Encoding}}\headcommand {\beamer@subsectionpages {35}{36}}
-\headcommand {\slideentry {2}{3}{1}{37/41}{Softmax and One-Hot Encoding}{0}}
-\headcommand {\beamer@framepages {37}{41}}
-\headcommand {\slideentry {2}{3}{2}{42/44}{Softmax and One-Hot Encoding}{0}}
-\headcommand {\beamer@framepages {42}{44}}
-\headcommand {\beamer@subsectionentry {0}{2}{4}{45}{Loss Function}}\headcommand {\beamer@subsectionpages {37}{44}}
-\headcommand {\slideentry {2}{4}{1}{45/47}{Loss Function}{0}}
-\headcommand {\beamer@framepages {45}{47}}
-\headcommand {\slideentry {2}{4}{2}{48/48}{Loss Function}{0}}
-\headcommand {\beamer@framepages {48}{48}}
-\headcommand {\slideentry {2}{4}{3}{49/49}{Loss Function}{0}}
-\headcommand {\beamer@framepages {49}{49}}
-\headcommand {\beamer@subsectionentry {0}{2}{5}{50}{Gradient Descent}}\headcommand {\beamer@subsectionpages {45}{49}}
-\headcommand {\slideentry {2}{5}{1}{50/50}{Gradient Descent}{0}}
+\headcommand {\slideentry {2}{2}{2}{36/38}{Randomizing Weights and Biases}{0}}
+\headcommand {\beamer@framepages {36}{38}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{39}{Softmax and One-Hot Encoding}}\headcommand {\beamer@subsectionpages {35}{38}}
+\headcommand {\slideentry {2}{3}{1}{39/43}{Softmax and One-Hot Encoding}{0}}
+\headcommand {\beamer@framepages {39}{43}}
+\headcommand {\slideentry {2}{3}{2}{44/46}{Softmax and One-Hot Encoding}{0}}
+\headcommand {\beamer@framepages {44}{46}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{47}{Loss Function}}\headcommand {\beamer@subsectionpages {39}{46}}
+\headcommand {\slideentry {2}{4}{1}{47/49}{Loss Function}{0}}
+\headcommand {\beamer@framepages {47}{49}}
+\headcommand {\slideentry {2}{4}{2}{50/50}{Loss Function}{0}}
 \headcommand {\beamer@framepages {50}{50}}
-\headcommand {\slideentry {2}{5}{2}{51/56}{Gradient Descent}{0}}
-\headcommand {\beamer@framepages {51}{56}}
-\headcommand {\slideentry {2}{5}{3}{57/57}{Gradient Descent}{0}}
-\headcommand {\beamer@framepages {57}{57}}
-\headcommand {\slideentry {2}{5}{4}{58/60}{Gradient Descent}{0}}
-\headcommand {\beamer@framepages {58}{60}}
-\headcommand {\beamer@subsectionentry {0}{2}{6}{61}{Backpropagation}}\headcommand {\beamer@subsectionpages {50}{60}}
-\headcommand {\slideentry {2}{6}{1}{61/64}{Backpropagation}{0}}
-\headcommand {\beamer@framepages {61}{64}}
-\headcommand {\slideentry {2}{6}{2}{65/68}{Backpropagation}{0}}
-\headcommand {\beamer@framepages {65}{68}}
-\headcommand {\slideentry {2}{6}{3}{69/73}{Backpropagation}{0}}
-\headcommand {\beamer@framepages {69}{73}}
-\headcommand {\slideentry {2}{6}{4}{74/76}{Backpropagation}{0}}
-\headcommand {\beamer@framepages {74}{76}}
-\headcommand {\slideentry {2}{6}{5}{77/81}{Backpropagation}{0}}
-\headcommand {\beamer@framepages {77}{81}}
-\headcommand {\sectionentry {3}{Improvements}{82}{Improvements}{0}}
-\headcommand {\beamer@sectionpages {25}{81}}
-\headcommand {\beamer@subsectionpages {61}{81}}
-\headcommand {\slideentry {3}{0}{1}{82/82}{}{0}}
-\headcommand {\beamer@framepages {82}{82}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{83}{Overfitting}}\headcommand {\beamer@subsectionpages {82}{82}}
-\headcommand {\slideentry {3}{1}{1}{83/83}{Overfitting}{0}}
-\headcommand {\beamer@framepages {83}{83}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{84}{References}}\headcommand {\beamer@subsectionpages {83}{83}}
-\headcommand {\slideentry {3}{2}{1}{84/84}{References}{0}}
-\headcommand {\beamer@framepages {84}{84}}
-\headcommand {\beamer@partpages {1}{84}}
-\headcommand {\beamer@subsectionpages {84}{84}}
-\headcommand {\beamer@sectionpages {82}{84}}
-\headcommand {\beamer@documentpages {84}}
-\headcommand {\def \inserttotalframenumber {32}}
+\headcommand {\slideentry {2}{4}{3}{51/51}{Loss Function}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\beamer@subsectionentry {0}{2}{5}{52}{Gradient Descent}}\headcommand {\beamer@subsectionpages {47}{51}}
+\headcommand {\slideentry {2}{5}{1}{52/52}{Gradient Descent}{0}}
+\headcommand {\beamer@framepages {52}{52}}
+\headcommand {\slideentry {2}{5}{2}{53/58}{Gradient Descent}{0}}
+\headcommand {\beamer@framepages {53}{58}}
+\headcommand {\slideentry {2}{5}{3}{59/59}{Gradient Descent}{0}}
+\headcommand {\beamer@framepages {59}{59}}
+\headcommand {\slideentry {2}{5}{4}{60/62}{Gradient Descent}{0}}
+\headcommand {\beamer@framepages {60}{62}}
+\headcommand {\beamer@subsectionentry {0}{2}{6}{63}{Backpropagation}}\headcommand {\beamer@subsectionpages {52}{62}}
+\headcommand {\slideentry {2}{6}{1}{63/66}{Backpropagation}{0}}
+\headcommand {\beamer@framepages {63}{66}}
+\headcommand {\slideentry {2}{6}{2}{67/70}{Backpropagation}{0}}
+\headcommand {\beamer@framepages {67}{70}}
+\headcommand {\slideentry {2}{6}{3}{71/75}{Backpropagation}{0}}
+\headcommand {\beamer@framepages {71}{75}}
+\headcommand {\slideentry {2}{6}{4}{76/78}{Backpropagation}{0}}
+\headcommand {\beamer@framepages {76}{78}}
+\headcommand {\slideentry {2}{6}{5}{79/83}{Backpropagation}{0}}
+\headcommand {\beamer@framepages {79}{83}}
+\headcommand {\slideentry {2}{6}{6}{84/89}{Backpropagation}{0}}
+\headcommand {\beamer@framepages {84}{89}}
+\headcommand {\sectionentry {3}{Improvements}{90}{Improvements}{0}}
+\headcommand {\beamer@sectionpages {25}{89}}
+\headcommand {\beamer@subsectionpages {63}{89}}
+\headcommand {\slideentry {3}{0}{1}{90/90}{}{0}}
+\headcommand {\beamer@framepages {90}{90}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{91}{Overfitting}}\headcommand {\beamer@subsectionpages {90}{90}}
+\headcommand {\slideentry {3}{1}{1}{91/91}{Overfitting}{0}}
+\headcommand {\beamer@framepages {91}{91}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{92}{References}}\headcommand {\beamer@subsectionpages {91}{91}}
+\headcommand {\slideentry {3}{2}{1}{92/92}{References}{0}}
+\headcommand {\beamer@framepages {92}{92}}
+\headcommand {\beamer@partpages {1}{92}}
+\headcommand {\beamer@subsectionpages {92}{92}}
+\headcommand {\beamer@sectionpages {90}{92}}
+\headcommand {\beamer@documentpages {92}}
+\headcommand {\def \inserttotalframenumber {33}}
