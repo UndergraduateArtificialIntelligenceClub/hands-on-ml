@@ -254,14 +254,14 @@ We've now computed how much our loss function depends upon the final activations
 \begin{frame}{Backpropagation Part III}
 We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \vspace{0.025\textheight} \pause 
 
-By matrix multiplication, $f_k=\hat{w}_{k1}h_1+\hat{w}_{k2}h_2+\cdots+\hat{w}_{k,15}h_{15}+b_k$. \pause Therefore, $\displaystyle \frac{\partial L}{\partial \hat{w}_{k\ell}}=\sum_{i=i}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{w}_{k\ell }}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{w}_{k\ell}}=\begin{cases} o_kh_{\ell} & \text{ if } k\neq j \\ 
-\left(o_k-1\right)h_{\ell} & \text{ if } k=j \end{cases}$. \pause We can similarly see $\displaystyle \frac{\partial L}{\partial b_k}=\sum_{i=1}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial b_k}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial b_k}=\begin{cases} o_k & \text{ if } k\neq j \\ o_k-1&  \text{ if } k=j. \end{cases}$. \pause \vspace{0.025\textheight}
+By matrix multiplication, $f_i=\hat{w}_{i1}h_1+\hat{w}_{i2}h_2+\cdots+\hat{w}_{i,15}h_{15}+\hat{b}_i$. \pause Therefore, $\displaystyle \frac{\partial L}{\partial \hat{w}_{k\ell}}=\sum_{i=i}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{w}_{k\ell }}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{w}_{k\ell}}=\begin{cases} o_kh_{\ell} & \text{ if } k\neq j \\ 
+\left(o_k-1\right)h_{\ell} & \text{ if } k=j \end{cases}$. \pause We can similarly see $\displaystyle \frac{\partial L}{\partial \hat{b}_k}=\sum_{i=1}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{b}_i}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{b}_k}=\begin{cases} o_k & \text{ if } k\neq j \\ o_k-1&  \text{ if } k=j. \end{cases}$. \pause \vspace{0.025\textheight}
 
 Finally, we can observe $\frac{\partial f_i}{\partial h_k}=\hat{w}_{ik}$ by the way we set up the matrix. We store all of these values in a gradient table for easy access later. This is a core feature of \textbf{dynamic programming}, which is essential in this program.
 \end{frame}
 
 \begin{frame}{Backpropagation IV}
-Recall in the hidden layer, $h=\sigma(W\bar{x}+\bar{b})$, where  $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$ \pause
+Recall in the hidden layer, $h=\sigma(W\bold{x}+\bold{b})$, where  $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$ \pause
 By matrix multiplication, $h_k=\sigma(w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784}+b_k)$. \pause By the chain rule, we note $w_{k\ell}$ is fed into every final layer, therefore \begin{align*} \frac{\partial L}{\partial w_{k\ell}}&=\sum_{i=1}^{10}\frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial h_k}\frac{\partial h_k}{\partial w_{k\ell}} \\ &= \left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\frac{\partial h_k}{\partial w_{k\ell}}.\end{align*}
 \end{frame}
 \begin{frame}{Backpropagation Finale}
@@ -270,20 +270,23 @@ Recall $\sigma(z)=\frac{1}{1+e^{-z}}$, so $\frac{d}{dz}\sigma(z)=\frac{e^{-z}}{1
 \end{frame}
 
 \begin{frame}{Epoch}
-For a high-level overview of what we did,
+\begin{itemize}
+\item For each batch of size $m$ training images,
 \begin{itemize}
 \item For each $i$ in range $\{1, 2, 3, \cdots, m\}$ \pause 
 \begin{itemize}
-\item Performed feed forward on $\bold{x}_i$ to compute $\bold{o}$. \pause 
-\item Compared our predicted result with the actual result to compute a loss using negative log likelihood. \pause 
-\item Performed back propagation to compute gradient and see how much our loss depended upon weights and biases.  \pause 
+\item Randomly initialized a $784\times 15$ weight matrix $W$, a $15\times 10$ matrix $\hat{W}$, a $15\times 1$ bias vector $b$, and a $10\times 1$ vector $\hat{b}$.
+\item Performed feed forward on $\bold{x}_i$ to compute $\bold{o}, \bold{h},$ and $\bold{f}$. Saved results. \pause 
+\item Compared our predicted result with the actual result to compute a loss using negative log likelihood: $L(\bold{x_i})=-\log(o_j)$, where $j$ is the true label. \pause 
+\item Performed back propagation to compute gradient and see how much our loss depended upon every weight and bias.  \pause 
 \end{itemize}
-\item Average gradients, and apply gradient descent to each component with \textbf{fixed} learning rate $\eta$. 
+\item Average gradients for the batch, and apply gradient descent to each component with \textbf{fixed} learning rate $\eta$. 
 \end{itemize}
-This process is one epoch. It's often helpful to pass our data through our training model multiple times to get the best weights and biases. For our optimizer, we'll use ``tf.train.GradientDescentOptimizer(0.2)". \pause
+\end{itemize}
+This process is one epoch. It's often helpful to pass our data through our training model multiple times to get the best weights and biases.  \pause
 
 \vspace{0.025\textheight} 
-If we wish to use a \textbf{varied} learning rate, we can use a different optimizer, such as \textit{stochastic gradient descent}. We can then use ``sgd", or an even more optimized version such as ``adam".
+If we wish to use a \textbf{varied} learning rate, we can use a different optimizer, such as \textit{stochastic gradient descent}. We can then use ``sgd", or an even more optimized version such as ``adam". For more info, see \href{https://en.wikipedia.org/wiki/Stochastic_gradient_descent\#Adam}{here}.
 \end{frame}
 
 \section{Improvements}
@@ -309,7 +312,7 @@ If we wish to use a \textbf{varied} learning rate, we can use a different optimi
 
 \href{http://scs.ryerson.ca/~aharley/vis/fc/}{\beamergotobutton{3d Visualizing a Neural Network}} \smallskip
 
-\href{https://jed-ai.github.io/py1_gd_animation/}{\beamergotobutton{Visualizing Gradient Descent}} 
+\href{https://jed-ai.github.io/py1_gd_animation/}{\beamergotobutton{Visualizing Gradient Descent}} \medskip
 
 \href{https://www.tensorflow.org/tutorials}{\beamergotobutton{Tensorflow Tutorials}} \medskip
 

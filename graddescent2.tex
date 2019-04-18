@@ -1,0 +1,321 @@
+
+\documentclass[xcolor=dvipsnames, fontsize=11pt, % Font size
+pagesize, % Write page size to dvi or pdf
+parskip=half-, t]{beamer}
+
+\input{beamer.tex}
+\usepackage{multicol}
+\usepackage{listings}
+\titlegraphic{\includegraphics[height=0.09\textwidth]{uofa.png}}
+\title[Artificial Intelligence for Beginners]{Gradient Descent}
+\subtitle{Towards Neural Networks}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\author[Justin Stevens]{\large Justin Stevens \\ \large Undergraduate AI Society \\  April 2nd, 2019} % 
+\date{}
+\setbeamertemplate{button}{\tikz
+	\node[
+	inner xsep=10pt,
+	draw=structure!80,
+	fill=structure!50,
+	rounded corners=4pt]  {\large\insertbuttontext};}
+\usepackage{asymptote}
+\usepackage{animate}
+\usepackage{xmpmulti}
+\begin{document}
+	\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+	\begin{frame}[c]
+	\centering
+	\titlepage
+\end{frame}
+\section{Decision Making}
+\subsection{Perceptrons}
+\begin{frame}{Should I Stay or Should I Go?}
+Let's say I'm deciding on a given day whether or not to go to  an Edmonton Oilers game. Here are the factors that will influence my decision:  
+\begin{itemize}
+\item Are the tickets cheap or expensive?
+\item Do I have the time to go?
+\item Do I care about the team they're playing?
+\end{itemize}  
+We'll make my decision by encoding each possible input as a vector $\bar{\bold{x}}$: 
+\begin{table} \center 
+\begin{tabular}{ccc|c}
+Ticket Prices & Availability & Interest & $\bar{\bold{x}}$\\ \hline 
+Cheap & Yes & Yes & $(1,1,1)$ \\
+Cheap & No & No & $(1,0,0)$ \\
+Cheap & Yes & No & $(1,1,0)$ \\
+Cheap & No & Yes & $(1,0,1)$  \\
+Expensive & Yes & Yes & $(0,1,1)$ \\
+Expensive & No & No & $(0,0,0)$ \\
+Expensive & No & Yes & $(0,0,1)$ \\
+Expensive & Yes & No & $(0,1,0)$ 
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{How Will I Make my Decision?}
+Let's say I don't care much about price, but I do care about my availability and interest. In this case, the corresponding weights might be $\bar{\bold{w}}=(1, 6, 3)$.  We can then compute the dot product $\bar{\bold{w}}\cdot \bar{\bold{x}}$ for each possible input:  
+\begin{table} 
+\center 
+\begin{tabular}{cccc|c}
+Ticket Prices & Availability & Interest & $\bar{\bold{x}}$ & $\bar{\bold{w}}\cdot \bar{\bold{x}}$ \\ \hline 
+Cheap & Yes & Yes & $(1,1,1)$ & $10$ \\
+Cheap & No & No & $(1,0,0)$ & $1$ \\
+Cheap & Yes & No & $(1,1,0)$ & $7$\\
+Cheap & No & Yes & $(1,0,1)$ & $4$   \\
+Expensive & Yes & Yes & $(0,1,1)$ & $9$ \\
+Expensive & No & No & $(0,0,0)$  & $0$ \\
+Expensive & No & Yes & $(0,0,1)$ & $3$\\
+Expensive & Yes & No & $(0,1,0)$ & $6$
+\end{tabular}
+\end{table} 
+\vspace{0.05\textheight}
+We can now define my \textbf{activation threshold}, $t$, which will determine whether or not I go to the game, represented in binary.
+\end{frame}
+
+\begin{frame}{Formula for Decision Making}
+The general formula for my decision to go to the Oilers game is $$\text{output}=\begin{cases} 0 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}<t \\ 
+1 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}\ge t. \end{cases}$$  
+For instance, if $t=9$, we see I'll only go if I'm both available and interested.  If $t=7$, I'll also go if the tickets are cheap and I'm available:
+\begin{table} 
+\center 
+\begin{tabular}{cccc|c}
+Ticket Prices & Availability & Interest & $\bar{\bold{x}}$ & $\bar{\bold{x}}\cdot \bar{\bold{w}}$ \\ \hline 
+\textbf{\textcolor{Green}{Cheap}} & \textbf{\textcolor{Green}{Yes}} & \textbf{\textcolor{Green}{Yes}} & $(1,1,1)$ & \textbf{\textcolor{Green}{10}} \\
+Cheap & No & No & $(1,0,0)$ & $1$ \\
+\textbf{\textcolor{Green}{Cheap }}& \textbf{\textcolor{Green}{Yes }}& \textbf{\textcolor{Green}{No}} & $(1,1,0)$ & \textbf{\textcolor{Green}{7}} \\
+Cheap & No & Yes & $(1,0,1)$ & $4$   \\
+\textbf{\textcolor{Green}{Expensive}} & \textbf{\textcolor{Green}{Yes}} & \textbf{\textcolor{Green}{Yes}} & $(0,1,1)$ & \textbf{\textcolor{Green}{9}} \\
+Expensive & No & No & $(0,0,0)$  & $0$ \\
+Expensive & No & Yes & $(0,0,1)$ & $3$\\
+Expensive & Yes & No & $(0,1,0)$ & $6$
+\end{tabular}
+\end{table}
+\end{frame}
+\begin{frame}{Perceptrons}
+This is a simplified model of a \textbf{perceptron}. The idea was developed by Frank Rosenblatt at Cornell in 1957, and is often used in psychology.  
+
+\begin{figure}
+\center
+\includegraphics[scale=0.66]{perc.png}
+\caption{\textit{Source: Nielsen}}
+\end{figure} 
+\vspace{0.05\textheight} 
+Each of these lines collect evidence and are weighted to produce an output.  In practice, our inputs and outputs don't necessarily have to be binary; they can be real-valued. We therefore have to define a new activation function.
+\end{frame}
+\subsection{Activation Functions}
+\begin{frame}[c]{Introducing the Bias}
+Instead of comparing our weighted sum to a threshold, we instead \textit{add} a bias, $b$, to our weighted sum. We write this as $\bar{\bold{w}}\cdot \bar{\bold{x}}+b$ instead.  Then $$\text{output}=\begin{cases} 0 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}+b<0 \\ 
+1 & \text{ if } \bar{\bold{w}}\cdot \bar{\bold{x}}+b\ge 0. \end{cases}$$
+This is known as the \textit{heaviside step function}. We'll extend our model to multiple outputs soon, but first we'll examine other activation functions. 
+\begin{figure}
+\includegraphics[scale=0.23]{bias.jpg} 
+\end{figure}
+\end{frame}
+\begin{frame}{Rectified Linear Unit}
+If we want our outputs to be non-negative, we use the \textbf{rectified linear unit}, $$f(x)=\text{max}\{0, x\}.$$  Graphically, we can see:
+\begin{figure}
+\includegraphics[scale=0.18]{rectifier.png}
+\caption{Rectifier, and a smooth approximation $\log(1+e^x)$. (\textit{Source: Wikipedia}).}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Sigmoid Function} 
+As we saw above, our output doesn't necessarily have to be a $0$ or $1$; using a rectified linear unit, it can be any non-negative number.  However, for computational purposes, it's easiest if our outputs live in the range $(0,1)$.  We now define the \textbf{sigmoid} or logistic function, $\sigma(z)=\frac{1}{1+e^{-z}}$.  Graphically,
+\begin{figure}
+\includegraphics[scale=0.36]{logistic.png}
+\caption{As $z\to \infty$, we see $\sigma(z)\to 1$. Alternatively, as $z\to -\infty$, $\sigma(z)\to 0$. (\textit{Source: Towards Data Science}).}
+\end{figure}
+\end{frame}
+
+
+\section{Classifying Digits through MNIST}
+\begin{frame}[c]{Example Images}
+In \textbf{supervised learning} problems, we're given a set of training data with labels, which we try to learn. We'll use a generalization of the perceptron with different neurons, for which we try to learn the best possible weights.  
+\begin{figure} 
+\center
+\includegraphics{mnist_100_digits.png}
+\caption{How would you devise a system for a \textbf{computer} to classify the digits? How can we best utilize the data set, known as MNIST?  (\textit{Source: Nielsen}) }
+\end{figure}
+\end{frame}
+
+\begin{frame}[c]{MNIST Dataset}
+\begin{itemize}
+\item The MNIST database contains seventy thousand handwritten digits.   
+\begin{itemize}
+\item Each data-point contains both an image, and the desired digit.
+\item $60,000$ images are designated for training, and $10,000$ for testing:
+\includegraphics[scale=0.42]{load.png}
+\end{itemize}  
+\item Each image contains pixels ranging $0$ to $255$, in decreasing darkness. 
+\item  An individual image is a $28\times 28$ array of pixels.  
+\item The desired digit is represented as a number from $0$ to $9$.  
+\end{itemize}
+We'll build a model from the training images that will learn to classify digits!
+\end{frame}
+\subsection{Neural Networks}
+\begin{frame}{What we're building towards}
+\begin{figure}
+\center
+\includegraphics[scale=0.36]{goal.png}
+\caption{A simple neural network structure. The input vectors on the left hand side have $28\times 28=784$ inputs for each pixel, and the output layer has $10$ digits. (\textit{Source: Nielsen}) }
+\end{figure}
+\end{frame}
+\subsection{Randomizing Weights and Biases}
+\begin{frame}{Extending our Model}
+All of our weights and bias will be initialized from a normal distribution with mean $0$ and standard deviation $1$. 
+\begin{figure}
+\center
+\includegraphics[scale=0.28]{perceptron.png}
+\caption{\textit{Source: Daniel Alvarez, InTech}}
+\end{figure}
+\end{frame}
+\begin{frame}{Hidden Layer}
+The role of the \textbf{hidden layer} is to hold intermediate calculations. These will in turn be used to compute the output layer.  To produce the hidden layer, we must have an $784\times 15$ weight matrix, as seen below: $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$
+We take the dot product of each \textbf{row} with our input vector $\bold{x}$. We then add our bias vector, $\bold{b}$, which is $15\times 1$.  We finally apply our activation: $$\bold{h}=\sigma(W\bold{x}+\bold{b}).$$
+Notice the sigmoid function is applied component wise.
+\end{frame}
+\subsection{Softmax and One-Hot Encoding}
+\begin{frame}{Output Layer}
+We must now define a transformation from $\mathbb{R}^{15}$ to $\mathbb{R}^{10}$, which we can do using a $10\times 15$ weight matrix $\hat{W}$. We can then add a $10\times 1$ bias vector, $\hat{\bold{b}}$.  We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$.  We aren't done yet! We want the output to be the probability an image is a specific digit.  To do so, we use a \textbf{softmax} activation. The formula is $$\displaystyle \text{softmax}\left(\bold{z}\right)_{j}=\frac{e^{z_j}}{\sum_{k=1}^{10}e^{z_k}}, \quad 1\le j \le 10.$$ Notice the sum of these values will always be $1$.  The full computation is $$\bold{f}=\hat{W}\bold{h}+\hat{\bold{b}}, \quad \bold{o}=\text{softmax}\left(\bold{f}\right).$$  
+% For instance, $\text{softmax}(\begin{pmatrix} 4 \\ 2 \\ 1   \end{pmatrix})=\begin{pmatrix} 0.8438 \\ 0.1142 \\ 0.0420 \end{pmatrix}$ has max probability $84.38\%$.
+  \end{frame}
+  \begin{frame}{One Hot Encoding}
+Once we've computed the output, we need a way to compare it to our desired result. However, $\bold{o}$ is a $10\times 1$ vector, whereas our desired digit $y_{\text{train}}(\bold{x})$ is a scalar. We therefore encode the digit as a $10\times 1$ vector:  
+\begin{table}
+  \center \begin{tabular}{ccccc}
+  $\begin{pmatrix} 1 \\ 0 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 0 \\ 1 \\ 0 \\ \vdots \\ 0 \end{pmatrix}$ & $\begin{pmatrix} 0 \\ 0 \\ 1 \\ \vdots \\ 0 \end{pmatrix}$ & $\cdots$ & $\begin{pmatrix} 0 \\ 0 \\ 0 \\ \vdots \\ 1 \end{pmatrix}$ \\ \hline $0$ & $1$ & $2$ & $\cdots$ & $9$
+  \end{tabular}  
+  \end{table}
+  \vspace{0.025\textheight}
+  
+ The code for this is relatively simple: 
+ \begin{figure}[H] \center \includegraphics[scale=0.54]{onehot.png} \end{figure}
+
+ \end{frame}
+ \subsection{Loss Function}
+ \begin{frame}{Negative Log Likelihood}
+ To compute how accurate our model was at predicting a given value, we need a \textbf{loss} function. In this case, it's easiest to use \textit{negative log likelihood}.  
+ \begin{figure}[H] \center \includegraphics[scale=0.15]{neg_log_demo.png}
+ \caption{\textit{Source: LJ Mirand}} \end{figure}  
+To compute the loss for an individual training example, $\bold{x}$, with one-hot encoded label $y_{\text{train}}(\bold{x})$, and output $\bold{o}$, we compute $$L(\bold{x})=-y_{\text{train}}(\bold{x})\cdot \log \bold{o}=-\log(o_j),$$ where $j$ is the true label.
+ \end{frame}
+ \begin{frame}{Graph of Negative Log}
+Recall $L(\bold{x})=-\log(o_j)$. Since $o_j$ is between $0$ and $1$, we can graph the function, noting it approaches $0$ as $o_j\to 1$, and goes to $\infty$ as $o_j\to 0$.
+\begin{figure}[H] \center \includegraphics[scale=0.45]{neg_log.png}
+\caption{\textit{Source:  LJ Mirand}}\end{figure}
+ \end{frame}
+ \begin{frame}{Summarizing the Loss Function}
+ \begin{figure}[H] \center \includegraphics[scale=0.18]{fullpic.jpg}
+ \caption{\textit{Source: Micheleen Harris}}
+ \end{figure}
+ \end{frame}
+ \subsection{Gradient Descent}
+ \begin{frame}{Gradient Descent Intuition}
+Our goal is to minimize loss with respect to weights and biases. To simplify the model, let's assume $C$ is a function of two variables: $v_1$ and $v_2$. 
+\begin{figure}
+\includegraphics[scale=0.36]{valley.png}
+\caption{\textit{Source: Nielsen}}
+\end{figure}
+ \end{frame}
+ \begin{frame}{Gradient Descent II}
+ We see how much $C$ changes as we nudge $v_1$ and $v_2$. Approximating, $$\Delta C\approx \frac{\partial C}{\partial v_1}\Delta v_1+\frac{\partial C}{\partial v_2}\Delta v_2.$$  We  find the optimal way to adjust $\Delta v_1$ and $\Delta v_2$ so that $\Delta C$ is negative. We define $\Delta v=\binom{\Delta v_1}{\Delta v_2}$ and the \textbf{gradient} vector $\nabla C=\begin{pmatrix} \frac{\partial C}{\partial v_1} & \frac{\partial C}{\partial v_2} \end{pmatrix}^{T}.$ 
+ Therefore, $$\Delta C\approx \nabla C\cdot \Delta v.$$  By the Cauchy-Schwartz inequality, the direction of greatest descent is $\Delta v=-\lambda \nabla C$. In this case, $\Delta C\approx \nabla C\cdot -\lambda \nabla C=-\lambda \norm{\nabla C}^2\ll 0$.  
+ 
+ \vspace{0.04\textheight}
+ We therefore update $v\to v'=v-\lambda \nabla C$, where $\lambda$ is the \textbf{learning rate}. 
+ 
+We iterate this process in the hopes of finding a local minimum of $C$. This process can fairly easily generalize from $2$ variables to $n$ variables if we wish. 
+ \end{frame}
+ \begin{frame}[c]{Gradient Descent III}
+ \begin{figure}[H] \center
+ \includegraphics[scale=0.32]{valley_with_ball.png}
+ \caption{\textit{Source: Nielsen}}
+ \end{figure}
+ \end{frame}
+ \begin{frame}{Gradient Descent IV}
+ Our general rule for updating weights and biases in our neural network is $$w_k\to w_k'=w_k-\eta \frac{\partial L}{\partial w_k}, \quad b_{\ell}\to b_{\ell}'=b_{\ell}-\eta \frac{\partial L}{\partial b_{\ell}}.$$
+ In practice, updating our weights at every step is subject to stochastic error.  Therefore, we approximate our gradient function (which holds all of the partial derivatives) in \textbf{batches} of size $m$ and take their average: $$\nabla L\approx \frac{1}{m}\sum_{i=1}^{m}\nabla L_{X_i}.$$   
+ We can rewrite our update steps as $\begin{cases} w_k\to & w_k'=w_k-\frac{\eta}{m} \sum_{i=1}^{m} \frac{\partial L_{X_i}}{\partial w_k} \\  b_{\ell}\to & b_{\ell}'=b_{\ell}-\frac{\eta}{m} \sum_{i=1}^{m} \frac{\partial L_{X_i}}{\partial w_k} \end{cases}.$
+ 
+ \end{frame}
+ \subsection{Backpropagation}
+  \begin{frame}{Backpropagation Part I}
+In our hidden layer, we have $784\times 15+15\times 1=11,775$ weights and biases to train on. In the output layer, we only have $15\times 10+10\times 1=160$.  We'll answer the question: how much does our loss function depend on these parameters?  To answer this, we need the chain rule from calculus: 
+
+$$L=-\log \left(o_j\right), \quad o_j=\frac{e^{f_j}}{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}.$$
+Then $\frac{\partial L}{\partial f_j}=\frac{\partial L}{\partial o_j}\frac{\partial o_j}{\partial f_j}=-\frac{1}{o_j}\frac{\partial o_j}{\partial f_j}$. Using the quotient rule and some algebra,  \begin{align*} \frac{\partial L}{\partial f_j}&=-\frac{1}{o_j}\frac{\left(e^{f_1}+\cdots+e^{f_{10}}\right)e^{f_j}-e^{f_j}e^{f_j}}{\left(e^{f_1}+\cdots+e^{f_{10}}\right)^2} \\ &=-\frac{e^{f_1}+\cdots+e^{f_{10}}}{e^{f_j}}\cdot \frac{e^{f_j}\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}-e^{f_j}\right)}{\left(e^{f_1}+\cdots+e^{f_{10}}\right)^2} \\ &=-\frac{e^{f_1}+\cdots+e^{f_{10}}-e^{f_j}}{e^{f_1}+\cdots+e^{f_{10}}}=-\left(1-o_j\right)=o_j-1. \end{align*}
+
+  \end{frame}
+  \begin{frame}{Backpropagation Part II}
+$$L=-\log \left(o_j\right), \quad o_j=\frac{e^{f_j}}{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}.$$   If $i\neq j$, by the chain rule $\frac{\partial L}{\partial f_i}=\frac{\partial L}{\partial o_j}\frac{\partial o_j}{\partial f_i}=-\frac{1}{o_j}\frac{\partial o_j}{\partial f_i}.$  Using the quotient rule, \begin{align*} \frac{\partial L}{\partial f_i} &=-\frac{1}{o_j}\cdot \frac{-e^{f_j}e^{f_i}}{\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}\right)^2} \\ &=\frac{e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}}{e^{f_j}}\cdot \frac{e^{f_j}e^{f_i}}{\left(e^{f_1}+e^{f_2}+\cdots+e^{f_{10}}\right)^2} \\ &=\frac{e^{f_i}}{e^{f_1}+\cdots+e^{f_{10}}}=o_i. \end{align*} 
+We've now computed how much our loss function depends upon the final activations before applying the softmax.  We now go back a layer and see how much $L$ depends upon $\hat{W}$ and $\hat{b}$, and store these results in a gradient.
+\end{frame}
+\begin{frame}{Backpropagation Part III}
+We can write this as $\bold{f}=\begin{pmatrix} \hat{w}_{11} & \hat{w}_{12} & \cdots & \hat{w}_{1,15} \\ \hat{w}_{21} & \hat{w}_{22} & \cdots & \hat{w}_{2,15} \\ \vdots & \vdots & \vdots & \vdots \\ \hat{w}_{10,1} & \hat{w}_{10,2} & \cdots & \hat{w}_{10,15} \end{pmatrix}\begin{pmatrix} h_{1} \\ h_2 \\ \vdots \\ \vdots \\ h_{15} \end{pmatrix}+\begin{pmatrix} \hat{b}_{1} \\ \hat{b}_2 \\ \vdots \\ \hat{b}_{10} \end{pmatrix}$. \vspace{0.025\textheight}  
+
+By matrix multiplication, $f_i=\hat{w}_{i1}h_1+\hat{w}_{i2}h_2+\cdots+\hat{w}_{i,15}h_{15}+\hat{b}_i$.  Therefore, $\displaystyle \frac{\partial L}{\partial \hat{w}_{k\ell}}=\sum_{i=i}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{w}_{k\ell }}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{w}_{k\ell}}=\begin{cases} o_kh_{\ell} & \text{ if } k\neq j \\ 
+\left(o_k-1\right)h_{\ell} & \text{ if } k=j \end{cases}$.  We can similarly see $\displaystyle \frac{\partial L}{\partial \hat{b}_k}=\sum_{i=1}^{10} \frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial \hat{b}_k}=\frac{\partial L}{\partial f_k}\frac{\partial f_k}{\partial \hat{b}_k}=\begin{cases} o_k & \text{ if } k\neq j \\ o_k-1&  \text{ if } k=j. \end{cases}$.  \vspace{0.025\textheight}
+
+Finally, we can observe $\frac{\partial f_i}{\partial h_k}=\hat{w}_{ik}$ by the way we set up the matrix. We store all of these values in a gradient table for easy access later. This is a core feature of \textbf{dynamic programming}, which is essential in this program.
+\end{frame}
+
+\begin{frame}{Backpropagation IV}
+Recall in the hidden layer, $h=\sigma(W\bold{x}+\bold{b})$, where  $$W=\begin{pmatrix} w_{11} & w_{12}  & \cdots &  w_{1,784} \\  w_{21} & w_{22} & \cdots & w_{2,784} \\  \vdots & \vdots  & \ddots & \vdots \\  w_{15, 1} & w_{15, 2}  & \cdots & w_{15, 784} \end{pmatrix}, \quad \bold{x}=\begin{pmatrix} x_1 \\ x_2 \\ \vdots  \\ \vdots \\ x_{784} \end{pmatrix}, \quad \bold{b}=\begin{pmatrix} b_1 \\ b_2 \\ \vdots \\ b_{15} \end{pmatrix}.$$ 
+By matrix multiplication, $h_k=\sigma(w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784}+b_k)$.  By the chain rule, we note $w_{k\ell}$ is fed into every final layer, therefore \begin{align*} \frac{\partial L}{\partial w_{k\ell}}&=\sum_{i=1}^{10}\frac{\partial L}{\partial f_i}\frac{\partial f_i}{\partial h_k}\frac{\partial h_k}{\partial w_{k\ell}} \\ &= \left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\frac{\partial h_k}{\partial w_{k\ell}}.\end{align*}
+\end{frame}
+\begin{frame}{Backpropagation Finale}
+Let $g_k=w_{k1}x_1+w_{k2}x_2+\cdots+w_{k,784}x_{784}+b_k$. Then $h_k=\sigma(g_k)$ hence $$\frac{\partial h_k}{\partial w_{k\ell}}=\frac{\partial h_k}{\partial g_k}\frac{\partial g_k}{\partial w_{k\ell}}.$$ 
+Recall $\sigma(z)=\frac{1}{1+e^{-z}}$, so $\frac{d}{dz}\sigma(z)=\frac{e^{-z}}{1+e^{-z}}\cdot \frac{1}{1+e^{-z}}=\left(1-\sigma(z)\right)\sigma(z).$  Then $$\frac{\partial h_k}{\partial w_{k\ell}}=\left(1-\sigma(g_k)\right)\sigma(g_k)\bold{x}_{\ell}.$$  Similarly, we see $\frac{\partial h_k}{\partial b_k}=\left(1-\sigma(g_k)\right)\sigma(g_k)$, since $\frac{\partial g_k}{\partial b_k}=1$.  Thus, \begin{align*} \frac{\partial L}{\partial w_{k\ell}}&=\left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\left(1-\sigma(g_k)\right)\sigma(g_k)\bold{x}_{\ell} \\ \frac{\partial L}{\partial b_k}&=\left(\sum_{i\neq j}o_iw_{ik}+(o_j-1)w_{jk}\right)\left(1-\sigma(g_k)\right)\sigma(g_k). \end{align*}
+\end{frame}
+
+\begin{frame}{Epoch}
+\begin{itemize}
+\item For each batch of size $m$ training images,
+\begin{itemize}
+\item For each $i$ in range $\{1, 2, 3, \cdots, m\}$  
+\begin{itemize}
+\item Randomly initialized a $784\times 15$ weight matrix $W$, a $15\times 10$ matrix $\hat{W}$, a $15\times 1$ bias vector $b$, and a $10\times 1$ vector $\hat{b}$.
+\item Performed feed forward on $\bold{x}_i$ to compute $\bold{o}, \bold{h},$ and $\bold{f}$. Saved results.  
+\item Compared our predicted result with the actual result to compute a loss using negative log likelihood: $L(\bold{x_i})=-\log(o_j)$, where $j$ is the true label.  
+\item Performed back propagation to compute gradient and see how much our loss depended upon every weight and bias.   
+\end{itemize}
+\item Average gradients for the batch, and apply gradient descent to each component with \textbf{fixed} learning rate $\eta$. 
+\end{itemize}
+\end{itemize}
+This process is one epoch. It's often helpful to pass our data through our training model multiple times to get the best weights and biases.  
+
+\vspace{0.025\textheight} 
+If we wish to use a \textbf{varied} learning rate, we can use a different optimizer, such as \textit{stochastic gradient descent}. We can then use ``sgd", or an even more optimized version such as ``adam". For more info, see \href{https://en.wikipedia.org/wiki/Stochastic_gradient_descent\#Adam}{here}.
+\end{frame}
+
+\section{Improvements}
+\subsection{Overfitting}
+\begin{frame}{Overfitting}
+\begin{figure}[H]
+\includegraphics[scale=0.33]{overfitting.png}
+\caption{\textit{Source: Hacker Noon}}
+\end{figure}
+\end{frame}
+\subsection{References}
+\begin{frame}[c]{References}
+\setbeamertemplate{itemize items}[triangle]
+
+\href{http://neuralnetworksanddeeplearning.com/chap1.html}{\beamergotobutton{Michael Nielsen: Using neural nets to recognize handwritten digits}} \smallskip
+
+\href{https://ljvmiranda921.github.io/notebook/2017/08/13/softmax-and-the-negative-log-likelihood/}{\beamergotobutton{LJ Mirand: Understanding softmax and the negative log-likelihood}} \smallskip
+
+\href{https://towardsdatascience.com/a-beginners-guide-to-neural-networks-part-two-bd503514c71a}{\beamergotobutton{Towards Data Science: A Beginner's Guide to Neural Networks}} \medskip
+
+\href{https://www.deeplearningbook.org/}{\beamergotobutton{Deep Learning, Goodfellow et. al.}} \medskip
+
+
+\href{http://scs.ryerson.ca/~aharley/vis/fc/}{\beamergotobutton{3d Visualizing a Neural Network}} \smallskip
+
+\href{https://jed-ai.github.io/py1_gd_animation/}{\beamergotobutton{Visualizing Gradient Descent}} \medskip
+
+\href{https://www.tensorflow.org/tutorials}{\beamergotobutton{Tensorflow Tutorials}} \medskip
+
+
+\end{frame}
+\end{document}

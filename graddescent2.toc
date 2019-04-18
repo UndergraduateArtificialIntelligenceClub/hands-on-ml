@@ -1,0 +1,14 @@
+\select@language {english}
+\beamer@sectionintoc {1}{Decision Making}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Perceptrons}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Activation Functions}{7}{0}{1}
+\beamer@sectionintoc {2}{Classifying Digits through MNIST}{10}{0}{2}
+\beamer@subsectionintoc {2}{1}{Neural Networks}{13}{0}{2}
+\beamer@subsectionintoc {2}{2}{Randomizing Weights and Biases}{14}{0}{2}
+\beamer@subsectionintoc {2}{3}{Softmax and One-Hot Encoding}{16}{0}{2}
+\beamer@subsectionintoc {2}{4}{Loss Function}{18}{0}{2}
+\beamer@subsectionintoc {2}{5}{Gradient Descent}{21}{0}{2}
+\beamer@subsectionintoc {2}{6}{Backpropagation}{25}{0}{2}
+\beamer@sectionintoc {3}{Improvements}{31}{0}{3}
+\beamer@subsectionintoc {3}{1}{Overfitting}{32}{0}{3}
+\beamer@subsectionintoc {3}{2}{References}{33}{0}{3}
